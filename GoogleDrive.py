@@ -62,7 +62,7 @@ class GoogleDrive:
             file_path = os.path.join(path, file_name)
 
             fh = io.FileIO(f"{file_path}", 'wb')
-            downloader = googleapiclient.http.MediaIoBaseDownload(fh, request,chunksize=1024*1024)
+            downloader = googleapiclient.http.MediaIoBaseDownload(fh, request)
             done = False
             while done is False:
                 status, done = downloader.next_chunk()
