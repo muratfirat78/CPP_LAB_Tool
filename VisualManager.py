@@ -228,6 +228,8 @@ class VisualManager():
                 self.update_feedback(feedback_lines)
             else:
                 self.display_only_answer.value = '<body><font color="green">Enter your answer in the cell below.</font></body>'
+                with self.feedback_out:
+                    clear_output()
 
             self.display_only_answer.layout.visibility = 'visible'
             self.display_only_answer.layout.display = 'block'
