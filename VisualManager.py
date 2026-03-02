@@ -86,6 +86,7 @@ class VisualManager():
     def update_feedback(self,s):
         with self.feedback_out:
             clear_output(wait=True)
+            print("_______________________________")
             s = 'Feedback: '+s
 
             print(s)
@@ -178,6 +179,7 @@ class VisualManager():
             print("_______________________________")
             print(QText)
             print()
+            print("_______________________________")
 
         self.qans_lbl.layout.display = 'none'
         self.qans_lbl.layout.visibility = 'hidden'
@@ -367,8 +369,8 @@ class VisualManager():
                 if not self.currentQuiz.getCurrentQuestion().isProgrammingQuestion():
                     print('Correct answer:')
             else:
+                print("_______________________________")
                 s = 'Feedback: '+s
-
             print(s)
 
         #upload answer to drive

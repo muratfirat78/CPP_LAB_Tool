@@ -241,9 +241,7 @@ class ProgrammingQuestion():
          test_result  = self.test_class_question(compiled_code, tests)
       else:
         if 'return' in code_str:
-          print(1)
           if function_name in code_str:
-            print(1)
             test_result = self.test_programming_function(compiled_code, tests, function_name)
           else:
             pattern = r'^\s*def\s+([a-zA-Z_]\w*)\s*\('
