@@ -22,7 +22,7 @@ class ProgrammingQuestion():
       if self.online_version:
         from google.colab import _message
         notebook_json = _message.blocking_request('get_ipynb', request='', timeout_sec=5)
-        code_lines = notebook_json["ipynb"]["cells"][1]["source"]
+        code_lines = notebook_json["ipynb"]["cells"][2]["source"]
       else:
         import nbformat
 
