@@ -94,12 +94,10 @@ class ProgrammingQuestion():
       namespace = {}
       exec(compiled_function, namespace)
       count = 0
-
-  
       for test in tests:
         if test["type"] == "output" or test["type"] == "return":
-          func = namespace[function_name]
           try:
+            func = namespace[function_name]
             parameters = test["input"]
             expected = test["expected"]
             params = eval(parameters, namespace)
@@ -137,8 +135,19 @@ class ProgrammingQuestion():
         result = {}
         namespace = {}
         exec(compiled_code, namespace)
-
-        func = namespace[function_name]
+        try:
+          func = namespace[function_name]
+        except KeyError as e:
+          print(e)
+          print("Error: Function not found. It may be missing, or implemented when it shouldn’t be")
+          result["error"] = {
+              "result": "error: no function implemented",
+              "expected": "",
+              "correct": False,
+              "name": "error"
+          }
+          return result
+           
 
         for test in tests:
           if test["type"] == "output" or test["type"] == "return":
@@ -228,25 +237,45 @@ class ProgrammingQuestion():
         compiled_code = compile (code_str, 'test', 'exec')
       except:
         return 'Compile error, check your answer in the below cell', None, correct_keywords, total_keywords
-      
-      if 'return' in code_str and "class" not in code_str:
-        if function_name in code_str:
-          test_result = self.test_programming_function(compiled_code, tests, function_name)
-        else:
-           pattern = r'^\s*def\s+([a-zA-Z_]\w*)\s*\('
-           matches = re.findall(pattern, code_str, re.MULTILINE)
-           if len(matches) == 1:
-              test_result = self.test_programming_function(compiled_code, tests, matches[0])
-           else:
-              test_result = {}       
-              test_result[''] = {
-                'result': 'Error: no/multiple functions implemented',
-                'expected': '',
-                'correct': False,
-                'name':"Error: no/multiple functions implemented"
-            }
-      else:
+      if "class" in code_str:
          test_result  = self.test_class_question(compiled_code, tests)
+      else:
+        if 'return' in code_str:
+          print(1)
+          if function_name in code_str:
+            print(1)
+            test_result = self.test_programming_function(compiled_code, tests, function_name)
+          else:
+            pattern = r'^\s*def\s+([a-zA-Z_]\w*)\s*\('
+            matches = re.findall(pattern, code_str, re.MULTILINE)
+            if len(matches) == 1:
+                test_result = self.test_programming_function(compiled_code, tests, matches[0])
+            else:
+                test_result = {}       
+                test_result[''] = {
+                  'result': 'Error: no/multiple functions implemented',
+                  'expected': '',
+                  'correct': False,
+                  'name':"Error: no/multiple functions implemented"
+              }
+        else:
+           if function_name in code_str:
+              test_result  = self.test_programming_function_without_return(compiled_code, tests, function_name)
+           else:
+              pattern = r'^\s*def\s+([a-zA-Z_]\w*)\s*\('
+              matches = re.findall(pattern, code_str, re.MULTILINE)
+              if len(matches) == 1:
+                  test_result = self.test_programming_function_without_return(compiled_code, tests, matches[0])
+              else:
+                test_result = {}       
+                test_result[''] = {
+                  'result': 'Error: no/multiple functions implemented',
+                  'expected': '',
+                  'correct': False,
+                  'name':"Error: no/multiple functions implemented"
+              }
+              
+
       feedback_lines = self.get_formatted_feedback(test_result, correct_keywords, total_keywords)
 
       return feedback_lines, test_result, correct_keywords, total_keywords

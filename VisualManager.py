@@ -6,6 +6,7 @@ from ProgrammingQuestion import ProgrammingQuestion
 import importlib
 from Quiz import Quiz
 import os
+import json
 
 class VisualManager():
     def __init__(self, drive, online_version):
@@ -51,6 +52,43 @@ class VisualManager():
         self.QuizTab = VBox([self.userid_display,
                              HBox([hboxleft,hboxmiddle,hboxright])
                              ])
+    
+
+    def get_formatted_feedback_from_file(self, question_name):
+        answer_file = os.path.join(os.path.join("drive", str(self.drive.userid)), question_name + ".json")
+        
+        if not os.path.exists(answer_file):
+            return None
+
+        with open(answer_file, 'r', encoding='utf-8') as f:
+            answer_data = json.load(f)
+
+        if answer_data.get("type") != "programming":
+            return None
+
+        test_result = answer_data.get("result", {})
+        correct_keywords = answer_data.get("correct_keywords", 0)
+        total_keywords = answer_data.get("total_keywords", 0)
+
+        correct_tests = sum(1 for res in test_result.values() if res['correct'])
+        total_tests = len(test_result)
+
+        feedback_lines = [f"{correct_tests} out of {total_tests} tests passed:"]
+        for res in test_result.values():
+            result = "Passed" if res['correct'] else "Failed"
+            feedback_lines.append(f"{result}: {res['name']}")
+
+        feedback_lines.append("")
+        feedback_lines.append(f"Answer contains {correct_keywords} out of {total_keywords} keywords")
+
+        return "\n".join(feedback_lines)
+
+    def update_feedback(self,s):
+        with self.feedback_out:
+            clear_output(wait=True)
+            s = 'Feedback: '+s
+
+            print(s)
     
     def get_ui(self):
         ui = self.selectComponent.get_ui()
@@ -132,6 +170,8 @@ class VisualManager():
         Qtitle = self.currentQuiz.getCurrentQuestion().getTitle()
         QText = self.currentQuiz.getCurrentQuestion().getText()
         autofill_answer = self.get_autofill_answer(Qtitle)
+        feedback_lines = self.get_formatted_feedback_from_file(Qtitle)
+
         with self.description_out:
             clear_output(wait=True)
             print(f"""{BOLD}{Qtitle}{RESET}""")
@@ -182,11 +222,16 @@ class VisualManager():
                 self.qans_lbl.layout.display = 'block'
                 self.qans_lbl.layout.visibility = 'visible'
                 self.display_only_answer.value = autofill_answer
+
+                self.feedback_out.layout.display = 'block'
+                self.feedback_out.layout.visibility = 'visible'
+                self.update_feedback(feedback_lines)
             else:
                 self.display_only_answer.value = '<body><font color="green">Enter your answer in the cell below.</font></body>'
 
             self.display_only_answer.layout.visibility = 'visible'
             self.display_only_answer.layout.display = 'block'
+            
 
         if self.currentQuiz.getCurrentQuestion().isOpenQuestion():
             if autofill_answer is not None and autofill_answer != 'None':
@@ -259,8 +304,9 @@ class VisualManager():
                 clear_output(wait=True)
                 display(component_ui)
             
-        with self.feedback_out:
-            clear_output()
+        if not self.currentQuiz.getCurrentQuestion().isProgrammingQuestion():
+            with self.feedback_out:
+                clear_output()
 
         # except Exception as e:
 

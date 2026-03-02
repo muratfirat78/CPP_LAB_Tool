@@ -308,7 +308,7 @@ class QuestionsList:
                         "name": "Print numbers divisible by 7 and not multiple of 5",
                         "type": "output",
                         "input": "",
-                        "expected": [2002, 2009, 2016, 2023, 2037, 2044]
+                        "expected": ["2002", "2009", "2016", "2023", "2037", "2044", "2051", "2058", "2072", "2079"]
                     }
                 ],
                 "keywords": ["for", "in"],
@@ -325,9 +325,9 @@ class QuestionsList:
                 "tests": [
                     {
                         "name": "List comprehension result",
-                        "type": "return",
+                        "type": "output",
                         "input": "",
-                        "expected": [2002, 2009, 2016, 2023, 2037, 2044]
+                        "expected": ["2002", "2009", "2016", "2023", "2037", "2044", "2051", "2058", "2072", "2079"]
                     }
                 ],
                 "keywords": ["for", "in", "[", "]"],
@@ -344,9 +344,9 @@ class QuestionsList:
                 "tests": [
                     {
                         "name": "Map and lambda result",
-                        "type": "return",
+                        "type": "output",
                         "input": "",
-                        "expected": [2002, 2009, 2016, 2023, 2037, 2044]
+                        "expected": ["2002", "2009", "2016", "2023", "2037", "2044", "2051", "2058", "2072", "2079"]
                     }
                 ],
                 "keywords": ["lambda", "filter"],
@@ -365,13 +365,13 @@ class QuestionsList:
                         "name": "Counts valid strings (example 1)",
                         "type": "return",
                         "input": "(['abc', 'xyz', 'aba', '1221'])",
-                        "expected": 2
+                        "expected": "2"
                     },
                     {
                         "name": "Counts valid strings (example 2)",
                         "type": "return",
                         "input": "(['abc', 'xyz', 'aba', '1221', 'jooj', 'legermeetsysteelregel', 'madam', 'ikke', 'gij', 'fietser'])",
-                        "expected": 5
+                        "expected": "5"
                     }
                 ],
                 "keywords": [],
@@ -379,7 +379,7 @@ class QuestionsList:
             }
         },{
             "title": "1. Question 9",
-            "text": "Write a function \"modify_list\" that takes a list of numbers as input and modifies it by reference such that the elements at positions 3, 5, and 6 are set to the value of the element in the next position.",
+            "text": "Write a function \"modify_list\" that takes a list of numbers as input and modifies it by reference such that the elements at positions 3, 5, and 6 are set to the value of the element in the next position. The function should return the modified list",
             "component": "Python lab exercises",
             "choices": "",
             "type": "programming",
@@ -389,15 +389,15 @@ class QuestionsList:
                         "name": "Modifies list by reference",
                         "type": "return",
                         "input": "([0,1,2,3,4,5,6,7,8])",
-                        "expected": [0, 1, 2, 4, 4, 6, 6, 7, 7, 8]
+                        "expected": "[0, 1, 2, 4, 4, 6, 6, 7, 7, 8]"
                     }
                 ],
-                "keywords": ["assert"],
+                "keywords": [""],
                 "function_name": "modify_list"
             }
         },{
             "title": "1. Question 10",
-            "text": "All Dice Combinations. Write a list comprehension that uses nested for-clauses to create a single list with all 36 different dice combinations from (1,1) to (6,6).",
+            "text": "All Dice Combinations. Write a list comprehension that uses nested for-clauses to create a single list with all 36 different dice combinations from (1,1) to (6,6). This list should be printed",
             "component": "Python lab exercises",
             "choices": "",
             "type": "programming",
@@ -410,7 +410,7 @@ class QuestionsList:
                     "expected": "[(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)]",
                 },
                 ],
-                "keywords": [""],
+                "keywords": ["[", "]", "for", "in"],
                 "function_name": "default_function"
             }
         },        {
