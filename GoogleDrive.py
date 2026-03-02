@@ -68,11 +68,11 @@ class GoogleDrive:
             results = self.drive_service.files().list(q=query, fields="files(id, name)").execute()
             files = results.get('files', [])
 
-            if not os.path.exists('/content/drive/' + str(self.userid)):
-                os.makedirs('/content/drive/' + str(self.userid))
+            if not os.path.exists('/content/CPP_LAB_Tool/drive/' + str(self.userid)):
+                os.makedirs('/content/CPP_LAB_Tool/drive/' + str(self.userid))
 
             for file in files:
-                if not os.path.exists('/content/drive/' + str(self.userid) + '/' + file['name']):
+                if not os.path.exists('/content/CPP_LAB_Tool/drive/' + str(self.userid) + '/' + file['name']):
                     self.download(file['id'], file['name'], self.userid)
 
         def get_performances_master(self):
@@ -87,7 +87,7 @@ class GoogleDrive:
             )
             downloaded_files = 0
 
-            save_path = '/content/drive/'
+            save_path = '/content/CPP_LAB_Tool/drive/'
             if not os.path.exists(save_path):
                 os.makedirs(save_path)
 
@@ -172,7 +172,7 @@ class GoogleDrive:
 
         def write_answer_to_file(self, answer, filename):
             import json
-            with open(f"/content/drive/{self.userid}/{filename}", "w", encoding="utf-8") as f:
+            with open(f"/content/CPP_LAB_Tool/drive/{self.userid}/{filename}", "w", encoding="utf-8") as f:
                 json.dump(answer, f, ensure_ascii=False, indent=4, default=self._json_safe)
 
         def upload_log(self, filename):
