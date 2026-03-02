@@ -2,6 +2,7 @@ import io
 import sys
 import numpy as np
 import re
+from IPython.display import clear_output
 
 class ProgrammingQuestion():
     def __init__(self, online_version):
@@ -275,7 +276,7 @@ class ProgrammingQuestion():
               
 
       feedback_lines = self.get_formatted_feedback(test_result, correct_keywords, total_keywords)
-
+      clear_output()
       return feedback_lines, test_result, correct_keywords, total_keywords
     
     
