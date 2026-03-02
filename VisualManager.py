@@ -356,7 +356,7 @@ class VisualManager():
             answer_object = self.get_open_or_mchoice_answer_object(a, "multiple_choice", correct)
         elif self.currentQuiz.getCurrentQuestion().isProgrammingQuestion():
             feedback_lines, test_result, correct_keywords, total_keywords = ProgrammingQuestion.check_programming_question_answer(self.programmingQuestion, correct_answers[0]['tests'], correct_answers[0]['keywords'], correct_answers[0]['function_name'])
-            s = feedback_lines
+            s = ["_______________________________"] + feedback_lines
             answer_object = ProgrammingQuestion.get_programming_answer_object(self.programmingQuestion, test_result, correct_keywords, total_keywords)
         else:
             a = str(self.writtenresp.value)
@@ -370,7 +370,6 @@ class VisualManager():
                     print('Correct answer:')
             else:
                 s = 'Feedback: '+s
-            print("_______________________________")
             print(s)
 
         #upload answer to drive
