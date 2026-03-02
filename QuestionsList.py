@@ -256,7 +256,7 @@ class QuestionsList:
                         "expected": 7.0
                     }
                 ],
-                "keywords": ["for", "in"],
+                "keywords": [],
                 "function_name": "calculate_average"
             }
         }
