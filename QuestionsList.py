@@ -707,7 +707,7 @@ class QuestionsList:
                 }
             },       {
                 "title": "Lab exercises part 4",
-                "text":"Part 4. Pandas (30 minutes) \n\nThe following code imports numpy and pandas. It imports the data from the url https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv. The it assigns it to a variable called chipo.\n\nimport pandas as pd\nurl = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'\nchipo = pd.read_csv(url, sep = '\\t')\nchipo",
+                "text":"Part 4. Pandas (30 minutes) \n\nThe following code imports numpy and pandas. It imports the data from the url https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv. The it assigns it to a variable called chipo.\n\nPlease copy paste the below code into the code cell for use in the questions in this part:\n\nimport pandas as pd\nurl = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'\nchipo = pd.read_csv(url, sep = '\\t')\nchipo",
                 "component": "Python lab exercises",
                 "choices": "",
                 "type":"info",

@@ -8,7 +8,7 @@ import io
 import time
 import numpy as np
 import logging
-import datetime
+from datetime import datetime
 import threading
 
 
