@@ -115,7 +115,11 @@ class GoogleDrive:
                         download_file = True
                     if download_file:
                         # self.download(file['id'], file['name'], folder['name'])
-                        threading.Thread(target=self.download(file['id'], file['name'], folder['name'])).start()
+                        # threading.Thread(target=self.download(file['id'], file['name'], folder['name'])).start()
+                        threading.Thread(
+                            target=self.download,
+                            args=(file['id'], file['name'], folder['name'])
+                        ).start()
 
 
                     downloaded_files += 1
