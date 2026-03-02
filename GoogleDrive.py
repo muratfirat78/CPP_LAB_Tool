@@ -18,6 +18,8 @@ class GoogleDrive:
             self.folderid = '1u8d-pPwVGQkAFS9gL5LQx9MVub1kE-_1'
             self.userid = None
             self.userid = self.register()
+            max_threads = 4
+            self.semaphore = threading.Semaphore(max_threads)
             if get_performances:
                 self.get_performances()
             else:
@@ -38,6 +40,11 @@ class GoogleDrive:
                 return obj.tolist()
             
             return str(obj)
+        
+        def download_with_semaphore(self, file_id, file_name, folder_name):
+            with self.semaphore:
+                self.download(file_id, file_name, folder_name)
+
 
         def get_folder(self, userid):
             query = f"name='{userid}' and '{self.folderid}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false"
@@ -116,8 +123,13 @@ class GoogleDrive:
                     if download_file:
                         # self.download(file['id'], file['name'], folder['name'])
                         # threading.Thread(target=self.download(file['id'], file['name'], folder['name'])).start()
+                        # threading.Thread(
+                        #     target=self.download,
+                        #     args=(file['id'], file['name'], folder['name'])
+                        # ).start()
+
                         threading.Thread(
-                            target=self.download,
+                            target=self.download_with_semaphore,
                             args=(file['id'], file['name'], folder['name'])
                         ).start()
 
