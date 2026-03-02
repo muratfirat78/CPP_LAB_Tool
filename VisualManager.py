@@ -87,8 +87,6 @@ class VisualManager():
         with self.feedback_out:
             clear_output(wait=True)
             print("_______________________________")
-            s = 'Feedback: '+s
-
             print(s)
     
     def get_ui(self):

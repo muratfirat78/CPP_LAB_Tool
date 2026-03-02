@@ -183,7 +183,7 @@ class ProgrammingQuestion():
             if isinstance(expected, list):
                 correct = all(exp in printed_output for exp in expected)
             else:
-                expected = expected.strip()
+                expected = str(expected).strip()
                 correct = expected in printed_output
 
             result[parameters] = {
