@@ -18,7 +18,7 @@ class GoogleDrive:
             self.folderid = '1u8d-pPwVGQkAFS9gL5LQx9MVub1kE-_1'
             self.userid = None
             self.userid = self.register()
-            max_threads = 1
+            max_threads = 2
             self.semaphore = threading.Semaphore(max_threads)
             if get_performances:
                 self.get_performances()
