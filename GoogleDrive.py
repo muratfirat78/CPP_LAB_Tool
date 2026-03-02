@@ -13,12 +13,13 @@ import threading
 
 
 class GoogleDrive:    
-        def __init__(self, visualManager=None):      
+        def __init__(self, visualManager=None, get_performances=True):      
             self.drive_service = build('drive', 'v3')
             self.folderid = '1u8d-pPwVGQkAFS9gL5LQx9MVub1kE-_1'
             self.userid = None
             self.userid = self.register()
-            self.get_performances()
+            if get_performances:
+                self.get_performances()
             self.visualManager = visualManager
             logging.getLogger("google_auth_httplib2").setLevel(logging.ERROR)
 
