@@ -15,7 +15,7 @@ import threading
 class GoogleDrive:    
         def __init__(self, visualManager=None, get_performances=True):      
             self.drive_service = build('drive', 'v3')
-            self.folderid = '1u8d-pPwVGQkAFS9gL5LQx9MVub1kE-_1'
+            self.folderid = '1pgj7Hh58mUNYl26dp8av6CyNFymZQ5B9'
             self.userid = None
             self.userid = self.register()
             max_threads = 2
