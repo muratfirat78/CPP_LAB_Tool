@@ -66,7 +66,7 @@ class VisualManager():
         if answer_data.get("type") != "programming":
             return None
 
-        test_result = answer_data.get("result", {})
+        test_result = answer_data.get("result") or {}
         correct_keywords = answer_data.get("correct_keywords", 0)
         total_keywords = answer_data.get("total_keywords", 0)
 
