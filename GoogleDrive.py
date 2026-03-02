@@ -20,6 +20,9 @@ class GoogleDrive:
             self.userid = self.register()
             if get_performances:
                 self.get_performances()
+            else:
+                if not os.path.exists('/content/CPP_LAB_Tool/drive/'):
+                    os.makedirs('/content/CPP_LAB_Tool/drive/')
             self.visualManager = visualManager
             logging.getLogger("google_auth_httplib2").setLevel(logging.ERROR)
 
