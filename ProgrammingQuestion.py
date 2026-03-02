@@ -45,7 +45,12 @@ class ProgrammingQuestion():
     def test_class_question(self, compiled_code, tests):
         result = {}
         namespace = {}
-        exec(compiled_code, namespace)
+        old_stdout = sys.stdout
+        sys.stdout = io.StringIO()
+        try:
+            exec(compiled_code, namespace)
+        finally:
+            sys.stdout = old_stdout
 
         for test in tests:
             try:
@@ -93,7 +98,12 @@ class ProgrammingQuestion():
       result = {}
 
       namespace = {}
-      exec(compiled_function, namespace)
+      old_stdout = sys.stdout
+      sys.stdout = io.StringIO()
+      try:
+          exec(compiled_function, namespace)
+      finally:
+          sys.stdout = old_stdout
       count = 0
       for test in tests:
         if test["type"] == "output" or test["type"] == "return":
@@ -135,7 +145,12 @@ class ProgrammingQuestion():
     def test_programming_function_without_return(self, compiled_code, tests, function_name):
         result = {}
         namespace = {}
-        exec(compiled_code, namespace)
+        old_stdout = sys.stdout
+        sys.stdout = io.StringIO()
+        try:
+            exec(compiled_code, namespace)
+        finally:
+            sys.stdout = old_stdout
         try:
           func = namespace[function_name]
         except KeyError as e:
@@ -276,7 +291,6 @@ class ProgrammingQuestion():
               
 
       feedback_lines = self.get_formatted_feedback(test_result, correct_keywords, total_keywords)
-      clear_output()
       return feedback_lines, test_result, correct_keywords, total_keywords
     
     
