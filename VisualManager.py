@@ -369,8 +369,8 @@ class VisualManager():
                 if not self.currentQuiz.getCurrentQuestion().isProgrammingQuestion():
                     print('Correct answer:')
             else:
-                print("_______________________________")
                 s = 'Feedback: '+s
+            print("_______________________________")
             print(s)
 
         #upload answer to drive
