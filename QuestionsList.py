@@ -201,7 +201,7 @@ class QuestionsList:
         },
         {
             "title": "1. Question 1",
-            "text": "Write a function \"repeat_message\" that takes two inputs: a message (string) and a number (integer). The function should print the message the specified number of times.",
+            "text": "Write a function \"repeat_message\" that takes two inputs: a message (string) and a number (integer). The function should only print the message the specified number of times.",
             "component": "Python lab exercises",
             "choices": "",
             "type":"programming",
