@@ -227,7 +227,12 @@ class QuestionsList:
                             }
                         ],
                 "keywords": ["for", "in", "print"],
-                "function_name": "repeat_message"
+                "function_name": "repeat_message",
+                "solution":[
+                    "def repeat_message(msg, time):",
+                    "   for x in range(0,time):",
+                    "       print(msg)",
+                ]
                 }
         },{
             "title": "1. Question 2",
@@ -257,7 +262,11 @@ class QuestionsList:
                     }
                 ],
                 "keywords": [],
-                "function_name": "calculate_average"
+                "function_name": "calculate_average",
+                "solution": [
+                    "def calculate_average(numbers):",
+                    "    return sum(numbers)/len(numbers)",
+                ]
             }
         }
         ,{
@@ -272,11 +281,19 @@ class QuestionsList:
                     "name": "Counts occurrences of 'cat'",
                     "type": "output",
                     "input": "",
-                    "expected": "2\n"
+                    "expected": "2"
                 }
             ],
             "keywords": ["for", "in", "print"],
-            "function_name": "default_function"
+            "function_name": "default_function",
+            "solution": [
+                    "listm = [\"duck\", \"chicken\", \"mouse\", \"dog\", \"fox\", \"car\", \"cat\" ,\"cat\" ]",
+                    "acc=0",
+                    "for i in listm:",
+                    "    if i==\"cat\":",
+                    "        acc += 1",
+                    "print(acc)",
+                ]
             }
         },{
             "title": "1. Question 4",
@@ -294,7 +311,16 @@ class QuestionsList:
                     }
                 ],
                 "keywords": ["for", "in"],
-                "function_name": "countletter"
+                "function_name": "countletter",
+                "solution": [
+                    "def coutletter(p,s):",
+                    "    sc = 0",
+                    "    for counter in range(len(p)):",
+                    "        #print (counter, p[counter])",
+                    "        if p[int(counter)] == s:",
+                    "            sc = sc + 1",
+                    "    return sc",
+                ]
                 }
         },{
             "title": "1. Question 5",
@@ -308,11 +334,23 @@ class QuestionsList:
                         "name": "Print numbers divisible by 7 and not multiple of 5",
                         "type": "output",
                         "input": "",
-                        "expected": ["2002", "2009", "2016", "2023", "2037", "2044", "2051", "2058", "2072", "2079"]
+                        "expected": ["2002", "2009", "2016", "2023", "2037", "2044", "2051", "2058", "2072", "2079"],
+                        "solution":[
+                            "for i in range (2000,2080,1):",
+                            "    if (i % 5 ) != 0 :",
+                            "        if ( i % 7 ) == 0 :",
+                            "            print (i)",
+                        ]
                     }
                 ],
                 "keywords": ["for", "in"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":[
+                    "for i in range (2000,2080,1):",
+                    "    if (i % 5 ) != 0 :",
+                    "        if ( i % 7 ) == 0 :",
+                    "            print (i)",
+                ]
             }
         },
         {
@@ -331,7 +369,11 @@ class QuestionsList:
                     }
                 ],
                 "keywords": ["for", "in", "[", "]"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "result = [num for num in range(2000, 2081) if num % 7 == 0 and num % 5 != 0]",
+                    "print(result)",
+                ]
             }
         },
         {
@@ -350,7 +392,12 @@ class QuestionsList:
                     }
                 ],
                 "keywords": ["lambda", "filter"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":[
+                    "number_list = range(2000, 2080)",
+                    "result = list(filter(lambda x: x % 5 != 0 and x % 7 == 0, number_list))",
+                    "print(result)",
+                ]
             }
         },
                 {
@@ -375,7 +422,12 @@ class QuestionsList:
                     }
                 ],
                 "keywords": [],
-                "function_name": "count_strings"
+                "function_name": "count_strings",
+                "solution": [
+                    "def count_strings(strList):",
+                    "    match = list(filter(lambda x: len(x)>=3 and x[0]==x[-1],strList))",
+                    "    return len(match)",
+                ]
             }
         },{
             "title": "1. Question 9",
@@ -393,7 +445,16 @@ class QuestionsList:
                     }
                 ],
                 "keywords": [""],
-                "function_name": "modify_list"
+                "function_name": "modify_list",
+                "solution": [
+                    "def modify_list(S):",
+                    "    S.append(0)",
+                    "    S[-1] = S[8]",
+                    "    S[3]=S[4]",
+                    "    S[5]=S[6]",
+                    "    S[8] = S[7]",
+                    "    return S",
+                ]
             }
         },{
             "title": "1. Question 10",
@@ -411,7 +472,12 @@ class QuestionsList:
                 },
                 ],
                 "keywords": ["[", "]", "for", "in"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "a = [1,2,3,4,5,6]",
+                    "m =[(x,y) for x in a for y in a]",
+                    "print (m)",
+                ]
             }
         },        {
             "title": "Lab exercises part 2",
@@ -472,7 +538,34 @@ class QuestionsList:
                     }
                 ],
                 "keywords": ["class"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                                "class Ball:",
+                                "    def __init__(self, initial_height, bounce_ratio):",
+                                "        self.initial_height = initial_height",
+                                "        self.bounce_ratio = bounce_ratio",
+                                "",
+                                "    def bounce(self):",
+                                "        total_distance = self.initial_height",
+                                "        current_height = self.initial_height",
+                                "        ",
+                                "        while current_height * self.bounce_ratio > 1:",
+                                "            current_height *= self.bounce_ratio",
+                                "            total_distance += 2 * current_height",
+                                "        return total_distance",
+                                "",
+                                "class Basketball(Ball):",
+                                "    def __init__(self, initial_height):",
+                                "        super().__init__(initial_height, 0.8)",
+                                "",
+                                "class Football(Ball):",
+                                "    def __init__(self, initial_height):",
+                                "        super().__init__(initial_height, 0.6)",
+                                "",
+                                "class Tennisball(Ball):",
+                                "    def __init__(self, initial_height):",
+                                "        super().__init__(initial_height, 0.5",
+                            ]
             }
         },        {
             "title": "Lab exercises part 3",
@@ -490,7 +583,8 @@ class QuestionsList:
             "correctness": {
                 "tests": [],
                 "keywords": ["import numpy as np"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":  ["import numpy as np"]
             }
         },
         {
@@ -502,7 +596,8 @@ class QuestionsList:
             "correctness": {
                 "tests": [],
                 "keywords": ["np.zeros(10)"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":  ["zer=  np.zeros(10)"]
             }
         },
         {
@@ -514,7 +609,8 @@ class QuestionsList:
             "correctness": {
                 "tests": [],
                 "keywords": ["np.zeros(10)","[4]"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":  ["zer=  np.zeros(10); zer[4] = 1"]
             }
         },{
             "title": "3. Question 4",
@@ -525,7 +621,8 @@ class QuestionsList:
             "correctness": {
                 "tests": [],
                 "keywords": ["np.arange(10,49)"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": ["np.arange(10,49)"]
             }
         },{
             "title": "3. Question 5",
@@ -539,22 +636,43 @@ class QuestionsList:
                         "name": "Non-zero indices",
                         "type": "output",
                         "input": "",
-                        "expected": "0\n1\n4\n"
+                        "expected": ["0", "1", "4"]
                     }
                 ],
                 "keywords": ["[1,2,0,0,4,0]",],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":[
+                        "import numpy as np",
+                        "#Manually",
+                        "myarray=np.array([1,2,0,0,4,0])",
+                        "",
+                        "indices  = myarray>0",
+                        "",
+                        "print(np.arange(0,6)[indices])",
+                        "",
+                        "#or",
+                        "print(np.nonzero(myarray))",
+                        "",
+                        "[i for i in np.arange(0,6) if indices[i]==True]",
+                    ]
             }
         },{
             "title": "3. Question 6",
-            "text": "Create a 10x10 array with random values and find the minimum and maximum values",
+            "text": "Create a 10x10 array with random values and print the minimum and maximum values",
             "component": "Python lab exercises",
             "choices": "",
             "type": "programming",
             "correctness": {
                 "tests": [],
                 "keywords": ["randn(10,10)","np.max","np.min"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "mymatrix= np.random.randn(10,10)",
+                    "print(np.shape(mymatrix))",
+                    "print(mymatrix)",
+                    "print(np.max(mymatrix))",
+                    "print(np.min(mymatrix))",
+                ]
             }
         },{
             "title": "3. Question 7",
@@ -565,18 +683,26 @@ class QuestionsList:
             "correctness": {
                 "tests": [],
                 "keywords": ["random.randn(30)","mean("],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "myvec= np.random.randn(30)",
+                    "np.mean(myvec)",
+                ]
             }
         },{
             "title": "3. Question 8",
-            "text": "Create a random vector of size 30 and find the mean value",
+            "text": "Create a random vector of size 10 and sort it",
             "component": "Python lab exercises",
             "choices": "",
             "type": "programming",
             "correctness": {
                 "tests":[],
                 "keywords": ["random.randn(10)","sort("],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution":[
+                    "myvec= np.random.randn(10)",
+                    "print(np.sort(myvec))",
+                ]
             }
         },{
             "title": "3. Question 9",
@@ -588,7 +714,15 @@ class QuestionsList:
                 "tests": []
                 ,
                 "keywords": ["random.randn(10)","]=0",],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "import numpy as np",
+                    "myvec= np.random.randn(10)",
+                    "index_max = np.argmax(myvec)",
+                    "print(myvec)",
+                    "myvec[index_max] = 0",
+                    "print(myvec)",
+                ]
             }
         },{
             "title": "3. Question 10",
@@ -599,8 +733,14 @@ class QuestionsList:
             "correctness": {
                 "tests": []
                 ,
-                "keywords": ["random.randn"],
-                "function_name": "default_function"
+                "keywords": ["random.randn", "np.where("],
+                "function_name": "default_function",
+                "solution": [
+                    "import numpy as np",
+                    "a = np.random.randn(10)",
+                    "b = np.random.randn(10)",
+                    "np.where(a==b)",
+                ]
             }
         }
         ,{
@@ -613,7 +753,20 @@ class QuestionsList:
                 "tests": []
                 ,
                 "keywords": ["vectorize(maxx)","[1,4,5,6,9]","[9,3,3,9,11]"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "import numpy as np",
+                    "def maxx(x, y):",
+                    "    \"\"\"Get the maximum of two items\"\"\"",
+                    "    if x >= y:",
+                    "        return x",
+                    "    else:",
+                    "        return y",
+                    "maxx(1, 5)",
+                    "vec_maxx= np.vectorize(maxx)#transforms maxx that is a function, in a function working on vectors",
+                    "print(vec_maxx)",
+                    "print(vec_maxx([1,4,5,6,9],[9,3,3,9,11]))",
+                ]
             }
         },{
             "title": "3. Question 12",
@@ -622,16 +775,14 @@ class QuestionsList:
             "choices": "",
             "type": "programming",
             "correctness": {
-                "tests": [
-                    {
-                        "name": "Matching positions",
-                        "type": "output",
-                        "input": "",
-                        "expected": "1\n3\n5\n7\n"
-                    }
-                ],
+                "tests": [],
                 "keywords": ["where(a==b)"],
-                "function_name": "default_function"
+                "function_name": "default_function",
+                "solution": [
+                    "a = np.array([1,2,3,2,3,4,3,4,5,6])",
+                    "b = np.array([7,2,10,2,7,4,9,4,9,8])",
+                    "np.where(a==b)",
+                ]
             }
         },{
                 "title": "3. Question 13",
@@ -667,7 +818,11 @@ class QuestionsList:
                     }
                 ],
                     "keywords": [],
-                    "function_name": "find_nearest_value"
+                    "function_name": "find_nearest_value",
+                    "solution": [
+                        "def find_nearest_value(numbers, target):",
+                        "    return min(numbers, key=lambda x: abs(x - target))",
+                    ]
                 }
             },{
                 "title": "3. Question 14",
@@ -703,7 +858,14 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [],
-                    "function_name": "moving_average"
+                    "function_name": "moving_average",
+                    "solution": [
+                            "import numpy as np",
+                            "def moving_average(a, n=3) :",
+                            "    ret = np.cumsum(a, dtype=float)",
+                            "    ret[n:] = ret[n:] - ret[:-n]",
+                            "    return ret[n - 1:] / n",
+                        ]
                 }
             },       {
                 "title": "Lab exercises part 4",
@@ -741,7 +903,13 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [".head(10)"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution": [
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "print(\"\\nNumber of observations:\", chipo.head(10))",
+                    ]
                 }
             },{
                 "title": "4. Question 2",
@@ -759,7 +927,13 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [".shape[0]"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "print(\"\\nNumber of observations:\", chipo.shape[0])",
+                    ]
                 }
             },{
                 "title": "4. Question 3",
@@ -777,7 +951,13 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [".shape[1]"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "print(\"\\nNumber of observations:\", chipo.shape[1])",
+                    ]
                 }
             },{
                 "title": "4. Question 4",
@@ -795,7 +975,13 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["columns.tolist()"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "print(\"\\nColumn names:\", chipo.columns.tolist())",
+                    ]
                 }
             },{
                 "title": "4. Question 5",
@@ -813,7 +999,13 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [".index"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "print(chipo.index)",
+                    ]
                 }
             },{
                 "title": "4. Question 6",
@@ -831,7 +1023,15 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [".value_counts()"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "item_counts = chipo['item_name'].value_counts()",
+                        "most_ordered_item = item_counts.index[0]",
+                        "print(\"\\nMost ordered item:\", most_ordered_item)",
+                    ]
                 }
             },{
                 "title": "4. Question 7",
@@ -849,7 +1049,15 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["iloc[0]"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "item_counts = chipo['item_name'].value_counts()",
+                        "most_ordered_item = item_counts.index[0]",
+                        "print(\"\\nNumber of times the most ordered item was ordered:\", item_counts.iloc[0])",
+                    ]
                 }
             },{
                 "title": "4. Question 8",
@@ -867,7 +1075,17 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["value_counts()", "index[0]"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "item_counts = chipo['item_name'].value_counts()",
+                        "most_ordered_item = item_counts.index[0]",
+                        "choice_counts = chipo['choice_description'].value_counts()",
+                        "most_ordered_choice = choice_counts.index[0]",
+                        "print(\"\\nMost ordered item in choice_description:\", most_ordered_choice)",
+                    ]
                 }
             },{
                 "title": "4. Question 9",
@@ -885,7 +1103,14 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["sum"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "total_items_ordered = chipo['quantity'].sum()",
+                        "print(\"\\nTotal items ordered:\", total_items_ordered)",
+                    ]
                 }
             },{
                 "title": "4. Question 10",
@@ -896,7 +1121,13 @@ class QuestionsList:
                 "correctness": {
                     "tests": [],
                     "keywords": ["replace", "astype(float)"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "chipo['item_price'] = chipo['item_price'].str.replace('$', '', regex=False).astype(float)",
+                    ]
                 }
             },{
                 "title": "4. Question 11",
@@ -914,7 +1145,15 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["sum", "quantity", "item_price"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "chipo['item_price'] = chipo['item_price'].str.replace('$', '').astype(float)",
+                        "revenue = (chipo['quantity'] * chipo['item_price']).sum()",
+                        "print(revenue)",
+                    ]
                 }
             },{
                 "title": "4. Question 12",
@@ -932,7 +1171,14 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["nunique"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "orders = chipo['order_id'].nunique()",
+                        "print(\"\\nNumber of orders:\", orders)",
+                    ]
                 }
             },{
                 "title": "4. Question 13",
@@ -950,7 +1196,17 @@ class QuestionsList:
                         }
                     ],
                     "keywords": [],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "chipo['item_price'] = chipo['item_price'].str.replace('$', '').astype(float)",
+                        "revenue = (chipo['quantity'] * chipo['item_price']).sum()",
+                        "orders = chipo['order_id'].nunique()",
+                        "average_order_amount = revenue / orders",
+                        "print(\"\\nAverage amount per order:\", average_order_amount)",
+                    ]
                 }
             },{
                 "title": "4. Question 14",
@@ -968,7 +1224,15 @@ class QuestionsList:
                         }
                     ],
                     "keywords": ["nunique"],
-                    "function_name": "default_function"
+                    "function_name": "default_function",
+                    "solution":[
+                        "import pandas as pd",
+                        "url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'",
+                        "chipo = pd.read_csv(url, sep = '	')",
+                        "chipo['item_price'] = chipo['item_price'].str.replace('$', '').astype(float)",
+                        "unique_items = chipo['item_name'].nunique()",
+                        "print(\"\\nNumber of unique items sold:\", unique_items)",
+                    ]
                 }
             }
         ]

@@ -1,11 +1,12 @@
 class Question():
-    def __init__(self, title, text,mchoice, component, parameters=None):
+    def __init__(self, title, text,mchoice, component, parameters=None, question_dict = None):
         self.title = title
         self.text = text
         self.type = mchoice
         self.choices = []
         self.tests = []
         self.keywords = []
+        self.question_dict = question_dict
         self.correctchoice = None
         self.component = component
         self.parameters = parameters
@@ -54,3 +55,6 @@ class Question():
     
     def get_parameters(self):
         return self.parameters
+    
+    def get_solution(self):
+        return self.question_dict.get("correctness", {}).get("solution", "")

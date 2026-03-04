@@ -102,7 +102,7 @@ class Quiz():
                 component = None
                 parameters = None
 
-            newquestion = Question(questions[i]["title"],questions[i]["text"],questions[i]["type"], component, parameters)
+            newquestion = Question(questions[i]["title"],questions[i]["text"],questions[i]["type"], component, parameters, questions[i])
             # newquestion = Question(r['Title'],r['Text'],r['Correctness'].find('~~')>-1)
             choices = questions[i]["choices"]
             correctness = questions[i]["correctness"]

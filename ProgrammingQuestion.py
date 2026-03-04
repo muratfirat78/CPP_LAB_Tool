@@ -30,7 +30,7 @@ class ProgrammingQuestion():
         with open("quiz.ipynb") as f:
             nb = nbformat.read(f, as_version=4)
 
-        code_cel = nb.cells[1]
+        code_cel = nb.cells[2]
         if code_cel.cell_type == 'code':
             code_lines = code_cel.source.splitlines(keepends=True)
         else:
@@ -84,7 +84,6 @@ class ProgrammingQuestion():
                     }
 
             except Exception as e:
-                print(e)
                 result[test.get("name", "error")] = {
                     "result": str(e),
                     "expected": test.get("expected", ""),
@@ -154,8 +153,6 @@ class ProgrammingQuestion():
         try:
           func = namespace[function_name]
         except KeyError as e:
-          print(e)
-          print("Error: Function not found. It may be missing, or implemented when it shouldn’t be")
           result["error"] = {
               "result": "error: no function implemented",
               "expected": "",
@@ -190,7 +187,7 @@ class ProgrammingQuestion():
                   'name': test["name"]
               }
 
-              print("error: " + s)
+              
             finally:
                 sys.stdout = old_stdout
 

@@ -37,6 +37,12 @@ class VisualManager():
         self.choices.layout.width = '99%'
         self.check = widgets.Button(description="Submit")
         self.check.on_click(self.check_selection)
+        self.check.layout.visibility = 'hidden'
+        self.check.layout.display = 'none'
+        self.show_solution = widgets.Button(description="Show solution")
+        self.show_solution.on_click(self.print_solution)
+        self.show_solution.layout.visibility = 'hidden'
+        self.show_solution.layout.display = 'none'
         self.currentQuiz = None
         self.components_ui = {}
         self.selectComponent = SelectComponent(self)
@@ -46,13 +52,21 @@ class VisualManager():
         hboxleft = VBox(children=[self.Qname,self.Qqsts],layout=Layout(width = '15%'))
         qvbox = VBox(children=[self.description_out,self.qans_lbl,self.writtenresp,self.display_only_answer,self.choices, self.component_output])
 
-        hboxmiddle = VBox(children=[qvbox,HBox(children=[self.check],layout=Layout(align_items='stretch')),self.feedback_out],layout=Layout(width = '75%'))
+        hboxmiddle = VBox(children=[qvbox,HBox(children=[self.check, self.show_solution],layout=Layout(align_items='stretch')),self.feedback_out],layout=Layout(width = '75%'))
         hboxright = HBox(children=[VBox(children=[])],layout=Layout(width = '15%'))
 
         self.QuizTab = VBox([self.userid_display,
                              HBox([hboxleft,hboxmiddle,hboxright])
                              ])
     
+
+    def print_solution(self,req):
+        s = self.currentQuiz.getCurrentQuestion().get_solution()
+        with self.feedback_out:
+            clear_output(wait=True)
+            print("_______________________________")
+            for line in s:
+                print(line)
 
     def get_formatted_feedback_from_file(self, question_name):
         answer_file = os.path.join(os.path.join("drive", str(self.drive.userid)), question_name + ".json")
@@ -212,6 +226,9 @@ class VisualManager():
                 
             self.check.layout.display = 'block'
             self.check.layout.visibility = 'visible'
+            
+            self.show_solution.layout.display = 'block'
+            self.show_solution.layout.visibility = 'visible'
 
             self.writtenresp.layout.visibility = 'hidden'
             self.writtenresp.layout.display = 'none'
@@ -259,6 +276,9 @@ class VisualManager():
             self.check.layout.display = 'block'
             self.check.layout.visibility = 'visible'
 
+            self.show_solution.layout.display = 'none'
+            self.show_solution.layout.visibility = 'hidden'
+
         if self.currentQuiz.getCurrentQuestion().isInfo():
             self.qans_lbl.layout.visibility = 'hidden'
             self.qans_lbl.layout.display = 'none'
@@ -277,6 +297,9 @@ class VisualManager():
 
             self.check.layout.visibility = 'hidden'
             self.check.layout.display = 'none'
+
+            self.show_solution.layout.display = 'none'
+            self.show_solution.layout.visibility = 'hidden'
 
 
         if self.currentQuiz.getCurrentQuestion().isCustomQuestion():
@@ -297,6 +320,9 @@ class VisualManager():
 
             self.check.layout.visibility = 'hidden'
             self.check.layout.display = 'none'
+
+            self.show_solution.layout.display = 'none'
+            self.show_solution.layout.visibility = 'hidden'
 
             question_name = self.currentQuiz.getCurrentQuestion().getTitle()
             component_name = self.currentQuiz.getCurrentQuestion().get_component_name()
