@@ -82,6 +82,13 @@ class ProgrammingQuestion():
                         "correct": correct,
                         "name": test["name"]
                     }
+                else:
+                    result[test.get("name", "error")] = {
+                        "result": "error",
+                        "expected": test.get("expected", ""),
+                        "correct": False,
+                        "name": test.get("name", "error")
+                    }
 
             except Exception as e:
                 result[test.get("name", "error")] = {
