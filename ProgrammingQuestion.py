@@ -137,8 +137,6 @@ class ProgrammingQuestion():
                   'correct': False,
                   'name': test["name"]
               }
-
-              print("error: " + s)
       return result
 
     def test_programming_function_without_return(self, compiled_code, tests, function_name):
