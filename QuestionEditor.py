@@ -79,12 +79,17 @@ class QuestionEditor:
         else:
             self.type_specific_output.children = [self.get_custom_editor()]
 
+
+
     def get_open_question_editor(self):
         question = self.quiz.questionsList.get_question(self.question_list_box.value)
         correct_answer = Text(description="Answer:")
-        correct_answer.value = question.get("correctness")
+        try:
+            correct_answer.value = question.get("correctness")
+        except:
+            correct_answer.value = ""
         return correct_answer
-    
+
 
     def get_multiple_choice_editor(self):
         question = self.quiz.questionsList.get_question(self.question_list_box.value)
