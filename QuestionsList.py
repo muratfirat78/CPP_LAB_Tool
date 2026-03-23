@@ -1307,7 +1307,7 @@ class QuestionsList:
                         questions.append(question)
                     except json.JSONDecodeError:
                         print("Error")
-
+        questions.sort(key=lambda q: q.get("order", 0))
         return questions
             
     def get_questions(self):
