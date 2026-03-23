@@ -7,6 +7,8 @@ import importlib
 from Quiz import Quiz
 import os
 import json
+from components.DataUnderstandingAndPreperationComponent.Visual import VisualManager as VisManagerDataVisAndPrep
+from QuestionsList import QuestionsList
 
 class VisualManager():
     def __init__(self, drive, online_version):
@@ -14,7 +16,7 @@ class VisualManager():
         self.online_version = online_version
         self.drive = drive
         self.userid_display = HTML(
-            value=f"<b style='font-size:16px; color:black; background-color:#e0e0e0; padding:2px 4px; border-radius:3px;'>Your user is: {self.drive.userid}</b>"
+            f"<b style='font-size:16px; color:black; background-color:#e0e0e0; padding:2px 4px; border-radius:3px;'>Your user is: {self.drive.userid}</b>"
         )
         self.Qname= widgets.Label(value="Questions")
         self.Qqsts= widgets.Select(description="")
@@ -46,6 +48,8 @@ class VisualManager():
         self.currentQuiz = None
         self.components_ui = {}
         self.selectComponent = SelectComponent(self)
+        self.VisManagerDataVisAndPrep = VisManagerDataVisAndPrep()
+        self.questionsList = QuestionsList()
         self.ui = VBox([])
 
         #quiz tab
@@ -54,10 +58,13 @@ class VisualManager():
 
         hboxmiddle = VBox(children=[qvbox,HBox(children=[self.check, self.show_solution],layout=Layout(align_items='stretch')),self.feedback_out],layout=Layout(width = '75%'))
         hboxright = HBox(children=[VBox(children=[])],layout=Layout(width = '15%'))
-
-        self.QuizTab = VBox([self.userid_display,
+        
+        self.QuizTab  = Tab()
+        self.QuizTab.children = [VBox([self.userid_display,
                              HBox([hboxleft,hboxmiddle,hboxright])
-                             ])
+                             ]), self.VisManagerDataVisAndPrep.generateHTTab()]
+        self.QuizTab.set_title(0, "Quiz")
+        self.QuizTab.set_title(1, "Dashboard")
     
 
     def print_solution(self,req):
@@ -110,7 +117,7 @@ class VisualManager():
 
     def start_quiz(self, component):
         display_output = self.getQuizTab()
-        currentQuiz = Quiz.open_quiz(display_output, component)
+        currentQuiz = Quiz.open_quiz(display_output, component, self.questionsList.get_questions)
         self.setQuiz(currentQuiz)
         self.getQsts().options = currentQuiz.getQuestionsWithStatus(self.drive.userid)
         self.ui.children = [display_output]
@@ -206,6 +213,9 @@ class VisualManager():
 
             self.writtenresp.layout.visibility = 'hidden'
             self.writtenresp.layout.display = 'none'
+
+            self.check.layout.display = 'block'
+            self.check.layout.visibility = 'visible'
 
             self.display_only_answer.layout.visibility = 'hidden'
             self.display_only_answer.layout.display = 'none'

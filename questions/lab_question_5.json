@@ -1,0 +1,14 @@
+{
+    "title": "Lab question 5",
+    "text": "The Acme Company has developed a new battery. The engineer in charge claims that the new battery will operate continuously for at least 7 minutes longer than the old battery.To test the claim, the company selects a simple random sample of 100 new batteries and 100 old batteries. The old batteries run continuously for 200 minutes with a standard deviation of 20 minutes; the new batteries, 200 minutes with a standard deviation of 40 minutes. Test the engineer's claim that the new batteries run at least 7 minutes longer than the old. Use a 0.05 level of significance. (Assume that there are no outliers in either sample.)",
+    "component": "Data Understanding And Data Preparation",
+    "type": "multiple_choice",
+    "choices": [
+        "Can reject h0",
+        "Can not reject h0"
+    ],
+    "correctness": [
+        false,
+        true
+    ]
+}

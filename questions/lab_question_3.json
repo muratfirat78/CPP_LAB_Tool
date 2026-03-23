@@ -1,0 +1,14 @@
+{
+    "title": "Lab question 3",
+    "text": "A political campaign claims that at least 55% of voters in a certain city support their candidate.   A random sample of 300 voters was taken, and it was found that 150 voters supported the candidate. At the 5% significance level, test whether there is enough evidence to reject the campaign's claim.",
+    "component": "Data Understanding And Data Preparation",
+    "type": "multiple_choice",
+    "choices": [
+        "Can reject h0",
+        "Can not reject h0"
+    ],
+    "correctness": [
+        false,
+        true
+    ]
+}

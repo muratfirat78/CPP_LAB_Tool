@@ -1,0 +1,14 @@
+{
+    "title": "Lab question 2",
+    "text": "A manufacturer of a new type of battery claims that their batteries last an average of 40 hours under continuous use. A consumer testing agency wants to investigate this claim. They randomly select 20 batteries and find that the sample mean lifespan is 38.5 hours, with a sample standard deviation of 3 hours. At a significance level of 0.02, can the agency conclude that the manufacturer's claim is false?",
+    "component": "Data Understanding And Data Preparation",
+    "type": "multiple_choice",
+    "choices": [
+        "Can reject h0",
+        "Can not reject h0"
+    ],
+    "correctness": [
+        false,
+        true
+    ]
+}

@@ -4,10 +4,12 @@ from QuestionsList import QuestionsList
 import os
 import json
 class Quiz():
-    def __init__(self, name):
+    def __init__(self, name, questionsList):
         self.name = name
-        self.questions = []
+        self.questions =[]
         self.currentQuestion = None
+        self.questionsList = questionsList
+
 
     def getName(self):
         return self.name
@@ -79,11 +81,11 @@ class Quiz():
     def getCurrentQuestion(self):
         return self.currentQuestion
     
-    def open_quiz(tab_set, component):
+    def open_quiz(tab_set, component, questionsList):
         qtslist = []
         quizstr = "Quiz Deel 1_Questions"
         qname = quizstr[:quizstr.find("_Questions")]
-        currentQuiz = Quiz(qname)
+        currentQuiz = Quiz(qname, questionsList)
         url = ""
         if qname == "Quiz Deel 1":
             url = "https://github.com/muratfirat78/Python/raw/main/Quiz Deel 1_Questions.csv"
