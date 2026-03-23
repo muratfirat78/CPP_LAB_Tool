@@ -1284,6 +1284,7 @@ class QuestionsList:
                 self.questions[i] = updated_question
                 return
         self.questions.append(updated_question)
+        self.questions.sort(key=lambda q: q.get("index", 0))
 
     def remove_question(self, title):
         for i, q in enumerate(self.questions):
@@ -1307,7 +1308,7 @@ class QuestionsList:
                         questions.append(question)
                     except json.JSONDecodeError:
                         print("Error")
-        questions.sort(key=lambda q: q.get("order", 0))
+        questions.sort(key=lambda q: q.get("index", 0))
         return questions
             
     def get_questions(self):

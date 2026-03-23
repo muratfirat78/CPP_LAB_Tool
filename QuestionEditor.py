@@ -29,6 +29,7 @@ class QuestionEditor:
         
         self.title_input = Text(description="Title:")
         self.text_input = Textarea(description="Text:", layout=Layout(width="400px", height="100px"))
+        self.index = Text(description="Index:")
         self.component_input = Text(description="Component:")
         self.type_dropdown = Dropdown(
             options=['open', 'multiple_choice', 'programming', 'custom', 'info'],
@@ -40,6 +41,7 @@ class QuestionEditor:
         self.editor_box = VBox([
             self.title_input,
             self.text_input,
+            self.index,
             self.component_input,
             self.type_dropdown,
             self.type_specific_output,
@@ -57,6 +59,7 @@ class QuestionEditor:
         question = self.quiz.questionsList.get_question(self.question_list_box.value)
         self.title_input.value = question.get("title")
         self.text_input.value = question.get("text")
+        self.index.value = str(question.get("index"))
         self.component_input.value = question.get("component")
         self.type_dropdown.value = question.get("type")
         self.update_type_specific_area({"new": question.get("type")})
@@ -304,6 +307,7 @@ class QuestionEditor:
         self.question_list_box.observe(self.select_question)
         self.title_input.value = ""
         self.text_input.value = ""
+        self.index.value = ""
         self.component_input.value = ""
         self.type_dropdown.value = None
         self.type_specific_output.children = []
@@ -312,6 +316,7 @@ class QuestionEditor:
         question = {}
         question["title"] = self.title_input.value
         question["text"] = self.text_input.value
+        question["index"] = int(self.index.value)
         question["component"] = self.component_input.value
         
         question["type"] = self.type_dropdown.value

@@ -3,7 +3,7 @@
     "text": "The local baseball team conducts a study to find the amount spent on refreshments at the ball park. Over the course of the season they gather simple random samples of 100 men and 100 women. For men, the average expenditure was $200, with a standard deviation of $40. For women, it was $190, with a standard deviation of $20. The team owner claims that men spend at least $7 more than women. Assume that the two populations are independent and normally distributed.",
     "component": "Data Understanding And Data Preparation",
     "type": "multiple_choice",
-    "order": 6,
+    "index": 6,
     "choices": [
         "Can reject h0",
         "Can not reject h0"

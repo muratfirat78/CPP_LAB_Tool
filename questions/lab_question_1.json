@@ -1,9 +1,9 @@
 {
     "title": "Lab question 1",
     "text": "A dietician claims that adults in a country consume an average of 1500 calories per day. A researcher believes that the average calorie consumption is higher. They collected data from a random sample of 30 adults and find that the sample mean is 1600 calories, with a sample standard deviation of 150 calories. At a significance level of 0.05, can the researcher conclude that the average calorie consumption is higher than 1500 calories?",
+    "index": 1,
     "component": "Data Understanding And Data Preparation",
     "type": "multiple_choice",
-    "order": 1,
     "choices": [
         "Can reject h0",
         "Can not reject h0"

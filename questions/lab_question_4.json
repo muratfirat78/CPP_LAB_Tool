@@ -1,9 +1,9 @@
 {
     "title": "Lab question 4",
     "text": "A national health organization claims that 65% of adults in a certain country get the recommended amount of daily exercise. A local health department believes this percentage is lower in their region. They conduct a random survey of 250 adults in their region and find that 150 of them meet the recommended exercise guidelines. At a significance level of 0.05, can the local health department conclude that the national organization's claim is false for their region?",
+    "index": 4,
     "component": "Data Understanding And Data Preparation",
     "type": "multiple_choice",
-    "order": 4,
     "choices": [
         "Can reject h0",
         "Can not reject h0"
