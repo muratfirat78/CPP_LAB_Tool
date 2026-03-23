@@ -64,7 +64,7 @@ class VisualManager():
                              HBox([hboxleft,hboxmiddle,hboxright])
                              ]), self.VisManagerDataVisAndPrep.generateHTTab()]
         self.QuizTab.set_title(0, "Quiz")
-        self.QuizTab.set_title(1, "Dashboard")
+        self.QuizTab.set_title(1, "Statistics Dashboard")
     
 
     def print_solution(self,req):
