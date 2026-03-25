@@ -1,0 +1,27 @@
+{
+    "title": "Programming question 4",
+    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return an integer that is the size of the data.",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 10,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns integer that is the number of rows",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "891"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataRead",
+        "solution": [
+            "import pandas as pd",
+            "",
+            "def DataRead(url):",
+            "    df = pd.read_csv(url)",
+            "    return df.shape[0]"
+        ]
+    }
+}

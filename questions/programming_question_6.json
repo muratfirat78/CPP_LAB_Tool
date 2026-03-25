@@ -1,0 +1,36 @@
+{
+    "title": "Programming question 6",
+    "text": "Implement a function called \"DataReadClean\" that has argument url to read a csv file from a remote repository. In the function the redundant features should be dropped and in the remaining features the missing values should be handled and the resulting dataframe should be returned.",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 12,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns dataframe with no missing values",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "missingvalues=0"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataReadClean",
+        "solution": [
+            "import pandas as pd",
+            "",
+            "def DataReadClean(url):",
+            "    df = pd.read_csv(url)",
+            "",
+            "    df = df.loc[:, df.nunique() > 1]",
+            "",
+            "    for col in df.columns:",
+            "        if df[col].dtype in ['float64', 'int64']:",
+            "            df[col].fillna(df[col].median(), inplace=True)",
+            "        else:",
+            "            df[col].fillna(df[col].mode()[0], inplace=True)",
+            "",
+            "    return df"
+        ]
+    }
+}

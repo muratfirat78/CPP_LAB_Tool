@@ -1,0 +1,43 @@
+{
+    "title": "Programming question 7",
+    "text": "Implement a function called \"DataReadCleanSplit\" that has argument url to read a csv file from a remote repository. In the function the redundant features should be dropped. In the remaining features the missing values should be handled. Finally the dataset should be split into train test parts with a ratio of 0.2. The function should return the resulting train and test dataframes in  tuple. [Hint: (TrainData,TestData)]",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 13,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns train and test dataframes with 0.2 split ratio",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "traindatasize=712,testdatasize=179"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataReadCleanSplit",
+        "solution": [
+            "import pandas as pd",
+            "from sklearn.model_selection import train_test_split",
+            "",
+            "def DataReadCleanSplit(url):",
+            "    # Read CSV from remote URL",
+            "    df = pd.read_csv(url)",
+            "    ",
+            "    # Drop redundant features (columns with all identical values or high correlation can be considered redundant)",
+            "    df = df.loc[:, df.nunique() > 1]  # drop columns with only 1 unique value",
+            "    ",
+            "    # Handle missing values (simple approach: fill numeric with mean, categorical with mode)",
+            "    for col in df.columns:",
+            "        if df[col].dtype == 'object':",
+            "            df[col].fillna(df[col].mode()[0], inplace=True)",
+            "        else:",
+            "            df[col].fillna(df[col].mean(), inplace=True)",
+            "    ",
+            "    # Split dataset into train and test sets with 0.2 test size",
+            "    train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)",
+            "    ",
+            "    return (train_df, test_df)"
+        ]
+    }
+}

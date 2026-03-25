@@ -2,6 +2,7 @@ import io
 import sys
 import numpy as np
 import re
+import pandas as pd
 from IPython.display import clear_output
 
 class ProgrammingQuestion():
@@ -102,7 +103,6 @@ class ProgrammingQuestion():
 
     def test_programming_function(self,compiled_function, tests, function_name):
       result = {}
-
       namespace = {}
       old_stdout = sys.stdout
       sys.stdout = io.StringIO()
@@ -118,22 +118,36 @@ class ProgrammingQuestion():
             parameters = test["input"]
             expected = test["expected"]
             params = eval(parameters, namespace)
+    
             if isinstance(params, tuple):
                 answer = func(*params)
             elif parameters == "":
                 answer = func()
             else:
                 answer = func(params)
+
+            if isinstance(answer, tuple) and all(isinstance(a, pd.DataFrame) for a in answer):
+                train_df, test_df = answer
+                answer_str = f"traindatasize={len(train_df)},testdatasize={len(test_df)}"
+            elif isinstance(answer, pd.DataFrame):
+                if "missingvalues=" in expected:
+                    missing_count = answer.isna().sum().sum()
+                    answer_str = f"missingvalues={int(missing_count)}"
+                else:
+                    answer_str = str(answer)
+            else:
+                answer_str = str(answer)
                 
             try:
                 if isinstance(answer, np.ndarray):
-                    answer = answer.tolist()
+                    answer_str = answer.tolist()
             except:
                 pass
+            
             result[parameters] = {
-                'result': answer,
+                'result': answer_str,
                 'expected': expected,
-                'correct': str(answer).strip() == str(expected).strip(),
+                'correct': str(answer_str).strip() == str(expected).strip(),
                 'name': test["name"]
             }
           except Exception as e:

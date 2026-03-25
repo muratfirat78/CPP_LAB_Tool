@@ -1,0 +1,27 @@
+{
+    "title": "Programming question 3",
+    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return a list of numbers, each represents the missing values in features/columns, in the order of the csv content.",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 9,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns list of missing values per feature",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "[0, 0, 0, 177, 0, 0, 0, 2, 0, 0, 0, 688, 2, 0, 0]"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataRead",
+        "solution": [
+            "import pandas as pd",
+            "",
+            "def DataRead(url):",
+            "    df = pd.read_csv(url)",
+            "    return df.isnull().sum().tolist()"
+        ]
+    }
+}

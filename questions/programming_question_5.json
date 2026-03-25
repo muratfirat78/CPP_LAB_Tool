@@ -1,0 +1,29 @@
+{
+    "title": "Programming question 5",
+    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return a list of numbers, each represents the number of features in types numerical and categorical respectively.",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 11,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns list of counts of numerical and categorical features",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "[6, 7]"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataRead",
+        "solution": [
+            "import pandas as pd",
+            "",
+            "def DataRead(url):",
+            "    df = pd.read_csv(url)",
+            "    numerical_count = df.select_dtypes(include=['number']).shape[1]",
+            "    categorical_count = df.select_dtypes(include=['object', 'category']).shape[1]",
+            "    return [numerical_count, categorical_count]"
+        ]
+    }
+}
