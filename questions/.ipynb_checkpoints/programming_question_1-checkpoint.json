@@ -1,0 +1,27 @@
+{
+    "title": "Programming question 1",
+    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return the number of missing values in the whole dataset.",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 7,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns amount of missing features",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "869"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataRead",
+        "solution": [
+            "import pandas as pd",
+            "",
+            "def DataRead(url):",
+            "    df = pd.read_csv(url)",
+            "    return df.isnull().sum().sum()"
+        ]
+    }
+}

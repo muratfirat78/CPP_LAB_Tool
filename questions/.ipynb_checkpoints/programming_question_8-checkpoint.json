@@ -1,0 +1,44 @@
+{
+    "title": "Programming question 8",
+    "text": "Implement a function called \"DataReadCleanProcess\" that has argument url to read a csv file from a remote repository. In the function the redundant features should be dropped. In the remaining features the missing values should be handled. Finally the dataset should be split into train test parts with a ratio of 0.2. Finally, the function should detect and handle the outliers of numerical features using z-score method with thresholds -3 and 3. The function should return the resulting train and test dataframes in  tuple. [Hint: (TrainData,TestData)]",
+    "component": "Data Understanding And Data Preparation",
+    "choices": "",
+    "type": "programming",
+    "index": 14,
+    "correctness": {
+        "tests": [
+            {
+                "name": "Returns train and test dataframes with 0.2 split ratio after outlier removal",
+                "type": "return",
+                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
+                "expected": "traindatasize=656,testdatasize=164"
+            }
+        ],
+        "keywords": [],
+        "function_name": "DataReadCleanProcess",
+        "solution": [
+            "import pandas as pd",
+            "from sklearn.model_selection import train_test_split",
+            "from scipy.stats import zscore",
+            "",
+            "def DataReadCleanProcess(url):",
+            "    df = pd.read_csv(url)",
+            "    ",
+            "    df = df.loc[:, df.nunique() > 1]",
+            "    ",
+            "    for col in df.columns:",
+            "        if df[col].dtype == 'object':",
+            "            df[col].fillna(df[col].mode()[0], inplace=True)",
+            "        else:",
+            "            df[col].fillna(df[col].mean(), inplace=True)",
+            "    ",
+            "    numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns",
+            "    z_scores = df[numeric_cols].apply(zscore)",
+            "    df = df[(z_scores >= -3).all(axis=1) & (z_scores <= 3).all(axis=1)]",
+            "    ",
+            "    train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)",
+            "    ",
+            "    return (train_df, test_df)"
+        ]
+    }
+}

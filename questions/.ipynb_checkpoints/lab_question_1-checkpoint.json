@@ -9,7 +9,7 @@
         "Can not reject h0"
     ],
     "correctness": [
-        true,
-        false
+        false,
+        true
     ]
 }
