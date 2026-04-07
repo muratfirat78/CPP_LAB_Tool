@@ -1052,7 +1052,65 @@ class QuestionsList:
             },
         ]
 
-        self.questions = self.questions + python_lab_questions
+        data_visualization = [
+            {"title": "Data visualisation 1",
+        "text": "Which properties apply to the given visualisation?.",
+        "choices": "",
+        "component": "DataVisualisation",
+        "parameters":[["MPG", "Acceleration"], "1.png"], 
+        "type":"custom",
+        "correctness":[{"key":"MPG-datatype", "value":"Numerical", "operator":"=="},
+                       {"key":"MPG-position", "value":"Y Position", "operator":"=="},
+                       {"key":"Acceleration-datatype", "value":"Numerical", "operator":"=="},
+                       {"key":"Acceleration-position", "value":"X Position", "operator":"=="},
+                       {"key":"marks", "value":"Points", "operator":"=="},
+                       {"key":"size", "value":"Area", "operator":"=="},
+                       {"key":"color", "value":"Hue", "operator":"=="}
+                      ]
+        }, {
+        "title": "Data visualisation 2",
+        "text": "Which properties apply to the given visualisation?.",
+        "choices": "",
+        "component": "DataVisualisation",
+        "parameters":[["MPG", "Acceleration"], "2.png"], 
+        "type":"custom",
+        "correctness":[{"key":"MPG-datatype", "value":"Numerical", "operator":"=="},
+                       {"key":"MPG-position", "value":"Y Position", "operator":"=="},
+                       {"key":"Acceleration-datatype", "value":"Numerical", "operator":"=="},
+                       {"key":"Acceleration-position", "value":"X Position", "operator":"=="},
+                       {"key":"marks", "value":"Areas", "operator":"=="},
+                       {"key":"size", "value":"Area", "operator":"=="},
+                       {"key":"color", "value":"Hue", "operator":"=="}
+                      ]
+        }, {
+        "title": "Data visualisation 3",
+        "text": "Which properties apply to the given visualisation?.",
+        "choices": "",
+        "component": "DataVisualisation",
+        "parameters":[["Temperature", "Date"], "3.png"], 
+        "type":"custom",
+        "correctness":[{"key":"Temperature-datatype", "value":"Numerical", "operator":"=="},
+                       {"key":"Temperature-position", "value":"Y Position", "operator":"=="},
+                       {"key":"Date-datatype", "value":"Ordinal", "operator":"=="},
+                       {"key":"Date-position", "value":"X Position", "operator":"=="},
+                       {"key":"marks", "value":"Points", "operator":"=="},
+                      ]
+        }, {
+        "title": "Data visualisation 4",
+        "text": "Which properties apply to the given visualisation?.",
+        "choices": "",
+        "component": "DataVisualisation",
+        "parameters":[["Temperature", "Date"], "4.png"], 
+        "type":"custom",
+        "correctness":[{"key":"Temperature-datatype", "value":"Numerical", "operator":"=="},
+                       {"key":"Temperature-position", "value":"Y Position", "operator":"=="},
+                       {"key":"Date-datatype", "value":["Ordinal","Numerical"], "operator":"in"},
+                       {"key":"Date-position", "value":"X Position", "operator":"=="},
+                       {"key":"marks", "value":["Points", "Lines"], "operator":"in"}
+                      ]
+        }]
+
+        self.questions = self.questions + python_lab_questions + data_visualization
 
 
         # self.questions = [
