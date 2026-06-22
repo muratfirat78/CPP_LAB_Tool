@@ -48,4 +48,5 @@ class GoogleDrive():
         with open(f"./drive/{self.userid}/{filename}", "w", encoding="utf-8") as f:
             json.dump(answer, f, ensure_ascii=False, indent=4, default=self._json_safe)
       
-      
+    def upload_file(self,filepath):
+        None

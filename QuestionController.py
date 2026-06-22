@@ -29,14 +29,19 @@ class QuestionController:
         path = Path(filename)
         with path.open("w", encoding="utf-8") as f:
             json.dump(self.overview, f)
+        self.controller.drive.upload_file(filename)
 
         # save answer
         filename = f"./drive/answers_{self.controller.userid}_{self.controller.run}.json"
         path = Path(filename)
         with path.open("w", encoding="utf-8") as f:
             json.dump(self.answers, f)
+        
+        self.controller.drive.upload_file(filename)
 
         self.controller.quiz.update_questions()
+
+        
 
 
     def set_progress(self):
