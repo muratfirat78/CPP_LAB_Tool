@@ -51,7 +51,7 @@ class GoogleDrive:
             request = self.drive_service.files().get_media(fileId=file_id)
 
             #create the userid folder if not existing
-            path = "/content/CPP_LAB_TOOL/drive"
+            path = "/content/CPP_LAB_Tool/drive"
             os.makedirs(path, exist_ok=True)
 
             file_path = os.path.join(path, file_name)
