@@ -209,11 +209,11 @@ class GoogleDrive:
                 self.userid = userid
 
         def upload_file(self, filepath):
-            folderid = self.get_folder(self.userid)
 
             filename = os.path.basename(filepath)
 
-            query = f"name='{filename}' and '{folderid}' in parents and trashed=false"
+            # Controleer of bestand al bestaat in de hoofdmap
+            query = f"name='{filename}' and '{self.folderid}' in parents and trashed=false"
             response = self.drive_service.files().list(
                 q=query,
                 spaces='drive',
@@ -228,21 +228,22 @@ class GoogleDrive:
             )
 
             if files:
-                file_id = files[0]['id']
+                # Overschrijven
                 uploaded_file = self.drive_service.files().update(
-                    fileId=file_id,
+                    fileId=files[0]['id'],
                     media_body=media
                 ).execute()
             else:
+                # Nieuw bestand in hoofdmap
                 file_metadata = {
                     'name': filename,
-                    'parents': [folderid]
+                    'parents': [self.folderid]
                 }
 
                 uploaded_file = self.drive_service.files().create(
                     body=file_metadata,
                     media_body=media,
-                    fields='id, name'
+                    fields='id,name'
                 ).execute()
 
             return uploaded_file
