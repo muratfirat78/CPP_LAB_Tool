@@ -208,53 +208,41 @@ class GoogleDrive:
             def set_userid(self,userid):
                 self.userid = userid
 
-            def upload_file(self, filepath):
-                """
-                Upload een bestand naar de Google Drive map van de gebruiker.
-                
-                Args:
-                    filepath (str): Pad naar het lokale bestand.
-                
-                Returns:
-                    dict: Informatie over het geüploade bestand.
-                """
-                folderid = self.get_folder(self.userid)
+        def upload_file(self, filepath):
+            folderid = self.get_folder(self.userid)
 
-                filename = os.path.basename(filepath)
+            filename = os.path.basename(filepath)
 
-                # Controleer of bestand al bestaat
-                query = f"name='{filename}' and '{folderid}' in parents and trashed=false"
-                response = self.drive_service.files().list(
-                    q=query,
-                    spaces='drive',
-                    fields='files(id)'
+            query = f"name='{filename}' and '{folderid}' in parents and trashed=false"
+            response = self.drive_service.files().list(
+                q=query,
+                spaces='drive',
+                fields='files(id)'
+            ).execute()
+
+            files = response.get('files', [])
+
+            media = googleapiclient.http.MediaFileUpload(
+                filepath,
+                resumable=True
+            )
+
+            if files:
+                file_id = files[0]['id']
+                uploaded_file = self.drive_service.files().update(
+                    fileId=file_id,
+                    media_body=media
+                ).execute()
+            else:
+                file_metadata = {
+                    'name': filename,
+                    'parents': [folderid]
+                }
+
+                uploaded_file = self.drive_service.files().create(
+                    body=file_metadata,
+                    media_body=media,
+                    fields='id, name'
                 ).execute()
 
-                files = response.get('files', [])
-
-                media = googleapiclient.http.MediaFileUpload(
-                    filepath,
-                    resumable=True
-                )
-
-                if files:
-                    # Bestand bestaat al -> overschrijven
-                    file_id = files[0]['id']
-                    uploaded_file = self.drive_service.files().update(
-                        fileId=file_id,
-                        media_body=media
-                    ).execute()
-                else:
-                    # Nieuw bestand aanmaken
-                    file_metadata = {
-                        'name': filename,
-                        'parents': [folderid]
-                    }
-
-                    uploaded_file = self.drive_service.files().create(
-                        body=file_metadata,
-                        media_body=media,
-                        fields='id, name'
-                    ).execute()
-
-                return uploaded_file
+            return uploaded_file
