@@ -63,17 +63,27 @@ class GoogleDrive:
                 status, done = downloader.next_chunk()
 
         def get_performances(self):
-            folderid = self.get_folder(self.userid)
-            query = f"'{folderid}' in parents and trashed=false"
-            results = self.drive_service.files().list(q=query, fields="files(id, name)").execute()
+            query = f"'{self.folderid}' in parents and trashed=false"
+            results = self.drive_service.files().list(
+                q=query,
+                fields="files(id, name)"
+            ).execute()
+
             files = results.get('files', [])
 
-            if not os.path.exists('/content/drive/' + str(self.userid)):
-                os.makedirs('/content/drive/' + str(self.userid))
+            save_path = f'/content/drive/{self.userid}'
+            os.makedirs(save_path, exist_ok=True)
 
             for file in files:
-                if not os.path.exists('/content/drive/' + str(self.userid) + '/' + file['name']):
-                    self.download(file['id'], file['name'], self.userid)
+                filename = file['name']
+
+                if f"_{self.userid}_" not in filename:
+                    continue
+
+                local_file = os.path.join(save_path, filename)
+
+                if not os.path.exists(local_file):
+                    self.download(file['id'], filename, self.userid)
 
         def get_performances_master(self):
             query = f"'{self.folderid}' in parents and trashed=false"
