@@ -1,17 +1,17 @@
 {
-    "title": "Programming question 1",
-    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return the number of missing values in the whole dataset.",
+    "title": "Programming question 2",
+    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return an integer that is the number of features.",
     "component": "Data Understanding And Data Preparation",
     "choices": "",
     "type": "programming",
-    "index": 7,
+    "index": 8,
     "correctness": {
         "tests": [
             {
-                "name": "Returns amount of missing features",
+                "name": "Returns integer that is the number of features",
                 "type": "return",
                 "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
-                "expected": "869"
+                "expected": "15"
             }
         ],
         "keywords": [],
@@ -20,8 +20,8 @@
             "import pandas as pd",
             "",
             "def DataRead(url):",
-            "    df = pd.read_csv(url)",
-            "    return df.isnull().sum().sum()"
-        ]
+            " df = pd.read_csv(url)",
+            " return df.shape[1]"
+            ]
     }
 }

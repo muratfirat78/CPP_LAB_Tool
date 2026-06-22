@@ -1,27 +1,20 @@
 {
     "title": "Programming question 2",
-    "text": "Implement a function called \"DataRead\" that has argument url to read a csv file from a remote repository. The function should return an integer that is the number of features.",
-    "component": "Data Understanding And Data Preparation",
-    "choices": "",
-    "type": "programming",
+    "text": "Load the Titanic dataset from this URL:\n\nhttps://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv\n\nIn a dictionary \"result\" give:\ntotal_missing_values: total count of all missing entries\nnum_rows: number of rows in the dataset\n",
     "index": 8,
-    "correctness": {
-        "tests": [
-            {
-                "name": "Returns integer that is the number of features",
-                "type": "return",
-                "input": "('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv')",
-                "expected": "15"
-            }
-        ],
-        "keywords": [],
-        "function_name": "DataRead",
-        "solution": [
-            "import pandas as pd",
-            "",
-            "def DataRead(url):",
-            " df = pd.read_csv(url)",
-            " return df.shape[1]"
-            ]
-    }
+    "component": "Data Understanding And Data Preparation",
+    "keywords": "",
+    "type": "programming",
+    "tests": {
+        "total_missing_values": "869",
+        "rear": "213"
+    },
+    "solution": [
+        "import pandas as pd",
+        "",
+        "def DataRead(url):",
+        " df = pd.read_csv(url)",
+        " return df.shape[1]"
+    ],
+    "choices": ""
 }

@@ -309,4 +309,49 @@ class ProgrammingQuestion():
       feedback_lines = self.get_formatted_feedback(test_result, correct_keywords, total_keywords)
       return feedback_lines, test_result, correct_keywords, total_keywords
     
-    
+    def check_programming_question_answer_dict(self, tests, keywords):
+        print("Tests")
+        print(tests)
+        code_lines = self.get_programming_cell()
+        code_str = "\n".join(code_lines)
+
+        correct_keywords = self.get_correct_keywords(keywords, code_str)
+        total_keywords = len(keywords)
+
+        if "result" not in code_str:
+            return "Error: you must assign your answer to variable 'result'", None, correct_keywords, total_keywords
+
+        try:
+            local_env = {}
+            exec(code_str, {}, local_env)
+        except Exception as e:
+            return f"Compile/runtime error: {e}", None, correct_keywords, total_keywords
+
+        if "result" not in local_env:
+            return "Error: 'result' not defined", None, correct_keywords, total_keywords
+
+        student_result = local_env["result"]
+
+        if not isinstance(student_result, dict):
+            return "Error: result must be a dictionary", None, correct_keywords, total_keywords
+
+        test_result = {}
+
+        for key, expected_value in tests.items():
+            student_value = student_result.get(key, None)
+
+            test_result[key] = {
+                "result": "Correct" if str(student_value) == str(expected_value) else "Incorrect",
+                "expected": expected_value,
+                "student": student_value,
+                "correct": str(student_value) == str(expected_value),
+                "name": key
+            }
+
+        feedback_lines = self.get_formatted_feedback(
+            test_result,
+            correct_keywords,
+            total_keywords
+        )
+
+        return feedback_lines, test_result, correct_keywords, total_keywords

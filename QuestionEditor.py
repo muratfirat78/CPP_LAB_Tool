@@ -134,56 +134,71 @@ class QuestionEditor:
     def get_programming_editor(self):
         question = self.quiz.questionsList.get_question(self.question_list_box.value)
 
-        keywords = question.get("correctness", {}).get("keywords", [])
-        keywords_box = Text(value=",".join(keywords), description="Keywords:")
+        keywords = question.get("keywords", [])
+        self.keywords_box = Text(value=",".join(keywords), description="Keywords:")
 
-        solution_lines = question.get("correctness", {}).get("solution", [])
-        solution_box = Textarea(value="\n".join(solution_lines), description="Solution", layout={"width": "600px", "height": "150px"})
+        solution_lines = question.get("solution", [])
+        self.solution_box = Textarea(value="\n".join(solution_lines), description="Solution", layout={"width": "600px", "height": "150px"})
 
-        tests = question.get("correctness", {}).get("tests", [])
+        tests = question.get("tests", [])
         self.tests_box = VBox()
 
         def create_test_row(test):
-            name = Text(value=test.get("name", ""), description="Test Name:")
-            expected = Text(value=str(test.get("expected", "")), description="Expected:")
-
-            options = ['return', 'output', 'class_method', 'inheritance']
-            test_type = Dropdown(
-                options=options,
-                value=test.get("type") if test.get("type") in options else options[0],
-                description='Type:'
-            )
-
-            if test_type.value in ['return', 'class_method', 'output']:
-                expected = Text(value=str(test.get("expected", "")), description="Expected:")
+            if test is not None:
+                key = test
+                value = tests.get(test)
             else:
-                expected = None
-         
-            if test_type.value in ['return', 'class_method']:
-                input_val = Text(value=str(test.get("input", "")), description="Input:")  
-            else:
-                input_val = None
+                key = ""
+                value = ""
+
             
-            if test_type.value in ['class_method','inheritance']:
-                class_name_box = Text(value=test.get("class_name", ""), description="Class Name:") 
-            else:
-                class_name_box = None
+            name = Text(value=key, description="Test Name:")
+            answer = Text(value=value, description="Answer:")
+            # expected = Text(value=str(test.get("expected", "")), description="Expected:")
 
-            if test_type.value == 'class_method':
-                function_name = Text(value=test.get("method", ""), description="Function:")
-            else:
-                function_name = None
+            # options = ['return', 'output', 'class_method', 'inheritance']
+            options = ['dict']
+            # test_type = Dropdown(
+            #     options=options,
+            #     value=test.get("type") if test.get("type") in options else options[0],
+            #     description='Type:'
+            # )
 
-            if test_type.value == 'inheritance':
-                parent_class = Text(value=test.get("parent_class", ""), description="Parent class:")
-            else:
-                parent_class = None
+            # if test_type.value in ['return', 'class_method', 'output']:
+            #     expected = Text(value=str(test.get("expected", "")), description="Expected:")
+            # else:
+            #     expected = None
+         
+            # if test_type.value in ['return', 'class_method']:
+            #     input_val = Text(value=str(test.get("input", "")), description="Input:")  
+            # else:
+            #     input_val = None
+
+            # if test_type.value in ['dict']:
+            #     answer_val = Text(value=str(test.get("dict", "")), description="Answer:")  
+            # else:
+            #     answer_val = None
+            
+            # if test_type.value in ['class_method','inheritance']:
+            #     class_name_box = Text(value=test.get("class_name", ""), description="Class Name:") 
+            # else:
+            #     class_name_box = None
+
+            # if test_type.value == 'class_method':
+            #     function_name = Text(value=test.get("method", ""), description="Function:")
+            # else:
+            #     function_name = None
+
+            # if test_type.value == 'inheritance':
+            #     parent_class = Text(value=test.get("parent_class", ""), description="Parent class:")
+            # else:
+            #     parent_class = None
 
             remove_button = Button(description="Remove", button_style="danger")
 
             # Create the row layout dynamically
             row_children = [name]
-            for widget in [function_name, input_val, class_name_box, parent_class, expected, test_type, remove_button]:
+            for widget in [answer, remove_button]:
                 if widget is not None:
                     row_children.append(widget)
             row = VBox([
@@ -194,40 +209,45 @@ class QuestionEditor:
             def remove_test(_):
                 self.tests_box.children = tuple(c for c in self.tests_box.children if c is not row)
 
-            def on_type_change(change):
-                new_type = change['new']
-                nonlocal row_children, input_val, class_name_box, function_name, parent_class, expected
-                row_children = [name] 
+            # def on_type_change(change):
+            #     new_type = change['new']
+            #     nonlocal row_children, input_val, answer_val, class_name_box, function_name, parent_class, expected
+            #     row_children = [name] 
 
-                #update values
-                input_val = Text(value=str(test.get("input", "")), description="Input:") if new_type in ['return', 'class_method'] else None
-                class_name_box = Text(value=test.get("class_name", ""), description="Class Name:") if new_type == 'class_method' else None
-                function_name = Text(value=test.get("method", ""), description="Method:") if new_type in ['class_method'] else None
-                parent_class = Text(value=test.get("parent_class", ""), description="Parent class:") if new_type == 'inheritance' else None
-                expected = Text(value=str(test.get("expected", "")), description="Expected:") if new_type in ['return', 'output', 'class_method'] else None
+            #     #update values
+            #     input_val = Text(value=str(test.get("input", "")), description="Input:") if new_type in ['return', 'class_method'] else None
+            #     answer_val = Text(value=str(test.get("key", "")), description="Answer:") if new_type in ['dict'] else None
+            #     class_name_box = Text(value=test.get("class_name", ""), description="Class Name:") if new_type == 'class_method' else None
+            #     function_name = Text(value=test.get("method", ""), description="Method:") if new_type in ['class_method'] else None
+            #     parent_class = Text(value=test.get("parent_class", ""), description="Parent class:") if new_type == 'inheritance' else None
+            #     expected = Text(value=str(test.get("expected", "")), description="Expected:") if new_type in ['return', 'output', 'class_method'] else None
                 
-                for widget in [function_name, input_val, class_name_box, parent_class, expected, test_type, remove_button]:
-                    if widget is not None:
-                        row_children.append(widget)
-                row.children = row_children
+            #     for widget in [function_name, input_val, answer_val, class_name_box, parent_class, expected, test_type, remove_button]:
+            #         if widget is not None:
+            #             row_children.append(widget)
+            #     row.children = row_children
 
-            test_type.observe(on_type_change, names='value')
+            # test_type.observe(on_type_change, names='value')
             remove_button.on_click(remove_test)
             return row
 
-        tests_rows = [create_test_row(t) for t in tests]
+        print(tests)
+
+        # for key in tests.keys():
+            
+        tests_rows = [create_test_row(t) for t in tests.keys()]
         self.tests_box.children = tuple(tests_rows)
 
         add_test_button = Button(description="Add Test", button_style="warning")
 
         def add_test(_):
-            new_test = create_test_row({"name": "", "input": "", "expected": "", "type": ""})
+            new_test = create_test_row(None)
             self.tests_box.children = self.tests_box.children + (new_test,)
             
 
         add_test_button.on_click(add_test)
 
-        editor = VBox([ keywords_box, solution_box,Label("_______________________________________________"),self.tests_box, add_test_button])
+        editor = VBox([ self.keywords_box, self.solution_box,Label("_______________________________________________"),self.tests_box, add_test_button])
         return editor
     
     def get_info_editor(self):
@@ -241,50 +261,65 @@ class QuestionEditor:
     
     def get_tests_data(self):
         tests = []
+        test_data = {}
         for row in self.tests_box.children:
+            print(row)
             widgets = row.children[0].children  
-            test_data = {}
-
+            key = ""
+            value = ""
             for w in widgets:
+
                 if isinstance(w, Text):
+                    print(w.description)
                     if w.description == "Test Name:":
-                        test_data["name"] = w.value
-                    elif w.description == "Input:":
-                        test_data["input"] = w.value
-                    elif w.description == "Expected:":
-                        test_data["expected"] = w.value
-                    elif w.description == "Class Name:":
-                        test_data["class_name"] = w.value
-                    elif w.description == "Function:":
-                        test_data["method"] = w.value
-                    elif w.description == "Parent class:":
-                        test_data["parent_class"] = w.value
-
-                elif isinstance(w, Dropdown):
-                    test_data["type"] = w.value
-            modified_test = {}
-            modified_test["name"] = test_data["name"]
-            modified_test["type"] = test_data["type"]
-
-            if test_data["type"] == 'return':
-                modified_test["input"] = test_data["input"]
-                modified_test["expected"] =  test_data["expected"]
-
-            if test_data["type"] == 'output':
-                modified_test["expected"] =  test_data["expected"]
+                        key = w.value
+                    elif w.description == "Answer:":
+                        value = w.value
+                print("append " + key + "val " + value)
             
-            if test_data["type"] == 'class_method':
-                modified_test["class_name"] = test_data["class_name"]
-                modified_test["input"] =  test_data["expected"]
-                modified_test["method"] =  test_data["method"]
-                modified_test["expected"] = test_data["expected"]
-        
-            if test_data["type"] == 'inheritance':
-                modified_test["class_name"] = test_data["class_name"]
-                modified_test["parent_class"] =  test_data["parent_class"]
+            test_data[key] = value
+                        
 
-            tests.append(modified_test)
-        return tests
+            #     if isinstance(w, Text):
+            #         if w.description == "Test Name:":
+            #             test_data["name"] = w.value
+            #         elif w.description == "Input:":
+            #             test_data["input"] = w.value
+            #         elif w.description == "Expected:":
+            #             test_data["expected"] = w.value
+            #         elif w.description == "Class Name:":
+            #             test_data["class_name"] = w.value
+            #         elif w.description == "Function:":
+            #             test_data["method"] = w.value
+            #         elif w.description == "Parent class:":
+            #             test_data["parent_class"] = w.value
+
+            #     elif isinstance(w, Dropdown):
+            #         test_data["type"] = w.value
+            # modified_test = {}
+            # modified_test["name"] = test_data["name"]
+            # modified_test["type"] = test_data["type"]
+
+            # if test_data["type"] == 'return':
+            #     modified_test["input"] = test_data["input"]
+            #     modified_test["expected"] =  test_data["expected"]
+
+            # if test_data["type"] == 'output':
+            #     modified_test["expected"] =  test_data["expected"]
+            
+            # if test_data["type"] == 'class_method':
+            #     modified_test["class_name"] = test_data["class_name"]
+            #     modified_test["input"] =  test_data["expected"]
+            #     modified_test["method"] =  test_data["method"]
+            #     modified_test["expected"] = test_data["expected"]
+        
+            # if test_data["type"] == 'inheritance':
+            #     modified_test["class_name"] = test_data["class_name"]
+            #     modified_test["parent_class"] =  test_data["parent_class"]
+
+            # tests.append(modified_test)
+        print(test_data)
+        return test_data
 
     def get_multiple_choice_data(self):
         choices = []
@@ -323,11 +358,13 @@ class QuestionEditor:
         question["text"] = self.text_input.value
         question["index"] = int(self.index.value)
         question["component"] = self.component_input.value
-        
+        question["keywords"] = self.keywords_box.value
         question["type"] = self.type_dropdown.value
 
         if self.type_dropdown.value == "programming":
-            print(self.get_tests_data())
+            question["tests"] = self.get_tests_data()
+            question["solution"] = self.solution_box.value.splitlines()
+            question["choices"] = ""
         
         if self.type_dropdown.value == 'multiple_choice':
             choices, correctness = self.get_multiple_choice_data()

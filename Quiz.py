@@ -43,8 +43,6 @@ class Quiz():
                 return ""
 
         if answer_data["type"] == "programming":
-            correct_keywords = answer_data.get("correct_keywords", 0)
-            total_keywords = answer_data.get("total_keywords", 0)
 
             result_data = answer_data.get("result", {})
 
@@ -65,9 +63,9 @@ class Quiz():
                 if isinstance(v, dict)
             )
 
-            if correct_keywords == total_keywords and all_tests_passed:
+            if all_tests_passed:
                 return "✅"
-            elif correct_keywords > 0 or any_test_passed:
+            elif any_test_passed:
                 return "~"
             else:
                 return "❌"
@@ -107,13 +105,13 @@ class Quiz():
             newquestion = Question(questions[i]["title"],questions[i]["text"],questions[i]["type"], component, parameters, questions[i])
             # newquestion = Question(r['Title'],r['Text'],r['Correctness'].find('~~')>-1)
             choices = questions[i]["choices"]
-            correctness = questions[i]["correctness"]
+            correctness = questions[i]
 
             if newquestion.IsMChoice():
                 for i in range(len(choices)):
                     newquestion.getChoices().append((choices[i],correctness[i]))
             else:
-                newquestion.getChoices().append((questions[i]["choices"],questions[i]["correctness"]))
+                newquestion.getChoices().append((questions[i]["choices"],questions[i]))
 
             currentQuiz.getQuestions().append(newquestion)
             
