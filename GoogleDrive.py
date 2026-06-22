@@ -51,7 +51,7 @@ class GoogleDrive:
             request = self.drive_service.files().get_media(fileId=file_id)
 
             #create the userid folder if not existing
-            path = os.path.join("drive", str(userid))
+            path = "/content/CPP_LAB_TOOL/drive"
             os.makedirs(path, exist_ok=True)
 
             file_path = os.path.join(path, file_name)
@@ -71,7 +71,7 @@ class GoogleDrive:
 
             files = results.get('files', [])
 
-            save_path = f'/content/drive/{self.userid}'
+            save_path = '/content/CPP_LAB_TOOL/drive/'
             os.makedirs(save_path, exist_ok=True)
 
             for file in files:
@@ -238,13 +238,11 @@ class GoogleDrive:
             )
 
             if files:
-                # Overschrijven
                 uploaded_file = self.drive_service.files().update(
                     fileId=files[0]['id'],
                     media_body=media
                 ).execute()
             else:
-                # Nieuw bestand in hoofdmap
                 file_metadata = {
                     'name': filename,
                     'parents': [self.folderid]
