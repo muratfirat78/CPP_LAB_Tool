@@ -255,3 +255,75 @@ class GoogleDrive:
                 ).execute()
 
             return uploaded_file
+
+        def download_questions_for_selection(self, controller):
+
+            component = controller.component
+            run = controller.run
+
+            if component is None or run is None:
+                raise ValueError("Component and run must be selected first.")
+
+            query = (
+                f"'{self.folderid}' in parents "
+                f"and trashed=false "
+                f"and name contains '{component}_{run}_'"
+            )
+
+            results = self.drive_service.files().list(
+                q=query,
+                fields="files(id,name,modifiedTime)"
+            ).execute()
+
+            files = results.get("files", [])
+
+            save_path = "../questions"
+            os.makedirs(save_path, exist_ok=True)
+
+            downloaded = 0
+
+            for file in files:
+                filename = file["name"]
+
+                # extra safety check
+                prefix = f"{component}_{run}_"
+                if not filename.startswith(prefix):
+                    continue
+
+                local_file = os.path.join(save_path, filename)
+
+                download_file = False
+
+                if os.path.exists(local_file):
+                    local_time = datetime.datetime.fromtimestamp(
+                        os.path.getmtime(local_file)
+                    )
+
+                    drive_time = datetime.datetime.fromisoformat(
+                        file["modifiedTime"].replace("Z", "+00:00")
+                    ).replace(tzinfo=None)
+
+                    if drive_time > local_time:
+                        download_file = True
+                else:
+                    download_file = True
+
+                if download_file:
+                    self.download(file["id"], filename, None)
+
+                    # move downloaded file from the default drive folder
+                    downloaded_file = os.path.join(
+                        "/content/CPP_LAB_Tool/drive",
+                        filename
+                    )
+
+                    if os.path.exists(downloaded_file):
+                        import shutil
+                        shutil.move(downloaded_file, local_file)
+
+                    downloaded += 1
+
+            print(
+                f"Downloaded/updated {downloaded} files "
+                f"for component='{component}', run='{run}'"
+            )

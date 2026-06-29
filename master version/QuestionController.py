@@ -32,11 +32,7 @@ class QuestionController:
         if os.path.exists(filename):
             os.remove(filename)
         
-    def save_question(self, question_data):
-        print("Hoi")
-        print(self.controller.run)
-        print(self.controller.component)
-    
+    def save_question(self, question_data):    
         question_data["component"] = self.controller.component
         question_data["run"] = self.controller.run      
 
