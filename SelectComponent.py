@@ -29,8 +29,6 @@ class SelectComponent:
         self.component_list.layout.display = "none"
         self.start_button.layout.display = "none"
 
-
-
     def set_components(self):
         for filename in os.listdir("./questions"):
             with open(f"./questions/{filename}", encoding="utf-8") as f:

@@ -25,14 +25,14 @@ class QuestionController:
         self.overview[question_name] = correct
         self.answers[question_name] = answer
         # save overview
-        filename = f"./drive/overview_{self.controller.userid}_{self.controller.run}.json"
+        filename = f"./drive/overview_{self.controller.component}_{self.controller.run}_{self.controller.userid}.json"
         path = Path(filename)
         with path.open("w", encoding="utf-8") as f:
             json.dump(self.overview, f)
         self.controller.drive.upload_file(filename)
 
         # save answer
-        filename = f"./drive/answers_{self.controller.userid}_{self.controller.run}.json"
+        filename = f"./drive/answers_{self.controller.component}_{self.controller.run}_{self.controller.userid}.json"
         path = Path(filename)
         with path.open("w", encoding="utf-8") as f:
             json.dump(self.answers, f)
@@ -46,7 +46,7 @@ class QuestionController:
 
     def set_progress(self):
         overview_map = {}
-        filename = f"./drive/overview_{self.controller.userid}_{self.controller.run}.json"
+        filename = f"./drive/overview_{self.controller.component}_{self.controller.run}_{self.controller.userid}.json"
         path = Path(filename)
 
         exists = True
@@ -71,7 +71,7 @@ class QuestionController:
 
         exists = True
         answers_map = {}
-        filename = f"./drive/answers_{self.controller.userid}_{self.controller.run}.json"
+        filename = f"./drive/answers_{self.controller.component}_{self.controller.run}_{self.controller.userid}.json"
         path = Path(filename)
         if path.exists():
             with path.open("r", encoding="utf-8") as f:
