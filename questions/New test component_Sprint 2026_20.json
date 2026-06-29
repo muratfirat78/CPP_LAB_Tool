@@ -1,0 +1,14 @@
+{
+    "title": "New Question2",
+    "text": "2",
+    "index": 20,
+    "type": "multiple_choice",
+    "choices": [
+        "2"
+    ],
+    "correctness": [
+        false
+    ],
+    "component": "New test component",
+    "run": "Sprint 2026"
+}
