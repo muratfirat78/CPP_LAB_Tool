@@ -40,7 +40,7 @@ class Overview:
         return self.vbox
 
     def refresh(self, _=None):
-        self.controller.drive.download_questions_for_selection()
+        self.controller.drive.download_questions_for_selection(self.controller)
         data = self.load_data()
 
         with self.answers_output:
