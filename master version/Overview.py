@@ -34,7 +34,6 @@ class Overview:
             self.heatmap_output,
         ])
 
-        self.refresh()
 
     def get_ui(self):
         return self.vbox
