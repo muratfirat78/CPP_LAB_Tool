@@ -270,19 +270,6 @@ class GoogleDrive:
                 f"and name contains '{component}_{run}'"
             )
 
-            print("QUERY:", query)
-
-            results = self.drive_service.files().list(
-                q=query,
-                fields="files(id,name,modifiedTime)"
-            ).execute()
-
-            files = results.get("files", [])
-
-            print("FOUND:", len(files))
-            for f in files:
-                print(repr(f["name"]))
-
             results = self.drive_service.files().list(
                 q=query,
                 fields="files(id,name,modifiedTime)"
@@ -297,12 +284,6 @@ class GoogleDrive:
 
             for file in files:
                 filename = file["name"]
-
-                # extra safety check
-                prefix = f"{component}_{run}"
-
-                if not filename.startswith(prefix):
-                    continue
 
                 local_file = os.path.join(save_path, filename)
 
