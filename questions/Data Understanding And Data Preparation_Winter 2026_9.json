@@ -1,0 +1,19 @@
+{
+  "title": "Programming question 2",
+  "text": "Load the Titanic dataset from this URL:\n\nhttps://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv\n\nIn a dictionary \"result\" give:\ntotal_missing_values: total count of all missing entries\nnum_rows: number of rows in the dataset\n",
+  "index": 8,
+  "component": "Data Understanding And Data Preparation",
+  "run": "Winter 2026",
+  "type": "programming",
+  "tests": {
+    "total_missing_values": "869",
+    "num_rows": "891"
+  },
+  "solution": [
+    "import pandas as pd",
+    "",
+    "def DataRead(url):",
+    " df = pd.read_csv(url)",
+    " return df.shape[1]"
+  ]
+}

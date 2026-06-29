@@ -1,0 +1,9 @@
+{
+    "title": "New open question",
+    "text": "test",
+    "index": 18,
+    "type": "open",
+    "correctness": "This is the answer",
+    "component": "Data Understanding And Data Preparation",
+    "run": "Spring 2027"
+}

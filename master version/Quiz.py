@@ -100,6 +100,7 @@ class Quiz:
             new_question = {
                 "title": "New Question",
                 "text": "",
+                "index":self.controller.get_next_index(),
                 "type": "open",
                 "solution": []
             }
@@ -108,6 +109,7 @@ class Quiz:
             new_question = {
                 "title": "New Question",
                 "text": "",
+                "index":self.controller.get_next_index(),
                 "type": "multiple_choice",
                 "options": [],
                 "correct": [],
@@ -118,7 +120,7 @@ class Quiz:
             new_question = {
                 "title": "New Question",
                 "text": "",
-                "index": 0,
+                "index":self.controller.get_next_index(),
                 "component": "",
                 "run": "",
                 "type": "programming",

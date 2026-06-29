@@ -32,3 +32,9 @@ class Controller:
         self.questions = self.questionController.read_questions()
         self.quiz.update_questions()
         self.quiz.show()
+        
+    def get_next_index(self):
+        if not self.questions:
+            return 10
+
+        return max(q["index"] for q in self.questions) + 10

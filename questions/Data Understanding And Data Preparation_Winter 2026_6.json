@@ -1,0 +1,9 @@
+{
+    "title": "Question 1",
+    "text": "Noem een voordeel en een nadeel van het feit dat Python dynamisch getypeerd is",
+    "index": 6,
+    "type": "open",
+    "correctness": "Een voordeel is: type casting is niet nodig. Een nadeel is: fouten met betrekking tot typen worden er niet door een compiler uitgehaald; je komt ze pas tegen tijdens het draaien van een programma.",
+    "component": "Data Understanding And Data Preparation",
+    "run": "Winter 2026"
+}

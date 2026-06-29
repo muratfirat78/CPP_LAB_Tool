@@ -101,7 +101,6 @@ class SelectRun:
 
                 if data["component"] == component:
                     runs.add(data["run"])
-        print(runs)
         self.run_list.options = sorted(runs)
 
     def copy_run(self, source_run, new_run):
