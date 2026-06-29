@@ -58,7 +58,7 @@ class Overview:
     def load_data(self):
         data = {}
 
-        drive_path = Path("./drive")
+        drive_path = Path("../drive")
 
         selected_component = self.controller.component
         selected_run = self.controller.run
