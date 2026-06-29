@@ -13,7 +13,8 @@ class ProgrammingQuestion:
 
         self.editor = widgets.Textarea(
             value=saved if saved != "unanswered" else "",
-            placeholder="Write Python code here...",
+            placeholder="Previous answer",
+            disabled=True,
             layout=widgets.Layout(width="100%", height="200px")
         )
 
