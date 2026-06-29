@@ -267,7 +267,7 @@ class GoogleDrive:
             query = (
                 f"'{self.folderid}' in parents "
                 f"and trashed=false "
-                f"and name contains '{component}_{run}_'"
+                f"and name contains '{component}_{run}'"
             )
 
             results = self.drive_service.files().list(
@@ -286,7 +286,8 @@ class GoogleDrive:
                 filename = file["name"]
 
                 # extra safety check
-                prefix = f"{component}_{run}_"
+                prefix = f"{component}_{run}"
+
                 if not filename.startswith(prefix):
                     continue
 
