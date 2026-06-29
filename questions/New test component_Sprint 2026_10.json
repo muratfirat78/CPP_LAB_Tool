@@ -1,0 +1,16 @@
+{
+    "title": "Is this true?",
+    "text": "Yes or no?",
+    "index": 10,
+    "type": "multiple_choice",
+    "choices": [
+        "Yes",
+        "No"
+    ],
+    "correctness": [
+        true,
+        false
+    ],
+    "component": "New test component",
+    "run": "Sprint 2026"
+}
