@@ -38,3 +38,9 @@ class QuestionController:
 
         with open("../questions/" + self.controller.component + "_" + self.controller.run + "_" +  str(question_data["index"]) + ".json", "w", encoding="utf-8") as f:
             json.dump(question_data, f, indent=4, ensure_ascii=False)
+
+        self.controller.questions = (
+            self.controller.questionController.read_questions()
+        )
+
+        self.controller.quiz.update_questions()
