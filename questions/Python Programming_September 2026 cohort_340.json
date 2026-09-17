@@ -1,0 +1,20 @@
+{
+    "title": "Pandas dataframes-2 ",
+    "text": "Which of the following functions makes us iterate the data instances of the dataset?",
+    "index": 340,
+    "type": "multiple_choice",
+    "choices": [
+        "head()",
+        "tail()",
+        "iterrows()",
+        "groupby()"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

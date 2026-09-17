@@ -1,0 +1,20 @@
+{
+    "title": "Pandas dataframes-4",
+    "text": "How does the following code line change the dataframe sales_df?\n\nsales_df = sales_df[sales_df[\"month_number\"] >= 4]\n",
+    "index": 360,
+    "type": "multiple_choice",
+    "choices": [
+        "selects some columns",
+        "generates a new row",
+        "selects a subset of data instances",
+        "modify certain rows"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

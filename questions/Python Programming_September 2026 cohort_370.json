@@ -1,0 +1,20 @@
+{
+    "title": "Pandas dataframes-5",
+    "text": "How does the following code line changes the dataset sales-df?\n\nsales_df = sales_df[[\"month_number\",\"facecream\",\"facewash\",\"total_units\",\"total_profit\"]]\n",
+    "index": 370,
+    "type": "multiple_choice",
+    "choices": [
+        "creates new columns",
+        "select certain columns",
+        "selects certain rows",
+        "defining a new dataframe"
+    ],
+    "correctness": [
+        false,
+        true,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

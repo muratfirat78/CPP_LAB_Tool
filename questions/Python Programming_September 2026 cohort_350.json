@@ -1,0 +1,20 @@
+{
+    "title": "Pandas dataframes-3",
+    "text": "Which of the following functions can be used to remove a column?",
+    "index": 350,
+    "type": "multiple_choice",
+    "choices": [
+        "dropna()",
+        "drop()",
+        "remove()",
+        "rename()"
+    ],
+    "correctness": [
+        false,
+        true,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}
