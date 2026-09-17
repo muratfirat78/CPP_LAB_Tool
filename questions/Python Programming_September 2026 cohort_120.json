@@ -1,5 +1,5 @@
 {
-    "title": "Object attribute",
+    "title": "4- Object attribute",
     "text": "What will be the output of the following Python code?\n\nclass tester:\n    def __init__(self, id):\n        self.id = str(id)\n        id=\"224\"\n \ntemp = tester(12)\nprint(temp.id)\n\n",
     "index": 120,
     "type": "multiple_choice",

@@ -1,5 +1,5 @@
 {
-    "title": "List properties",
+    "title": "3- List properties",
     "text": "What will be the output of the following Python function?\n\nprint(len([\"hello\",2, 4, 6]))",
     "index": 190,
     "type": "multiple_choice",

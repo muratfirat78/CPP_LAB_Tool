@@ -1,5 +1,5 @@
 {
-    "title": "Numpy 2D array slicing",
+    "title": "4- Numpy 2D array slicing",
     "text": "What is the output of the following code?\n(Hint: Type your answer with precise syntax) \n\nimport numpy as np\narr = np.array([[1, 3, 7, 9],[6, 7, 8, 9]])\nprint(arr[0:2, 1:3]) ",
     "index": 320,
     "type": "open",

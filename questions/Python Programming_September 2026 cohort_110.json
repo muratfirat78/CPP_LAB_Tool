@@ -1,5 +1,5 @@
 {
-    "title": "List iteration&Slicing",
+    "title": "1- List iteration&Slicing",
     "text": "What will be the output of the following Python code snippet?\n\nfor i in [1, 2, 3, 4][::-1]:\n    print(i, end=' ')",
     "index": 110,
     "type": "multiple_choice",

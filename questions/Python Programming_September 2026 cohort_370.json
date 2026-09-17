@@ -1,5 +1,5 @@
 {
-    "title": "Pandas dataframes-5",
+    "title": "5- Pandas dataframes-5",
     "text": "How does the following code line changes the dataset sales-df?\n\nsales_df = sales_df[[\"month_number\",\"facecream\",\"facewash\",\"total_units\",\"total_profit\"]]\n",
     "index": 370,
     "type": "multiple_choice",

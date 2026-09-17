@@ -1,5 +1,5 @@
 {
-    "title": "While loop output ",
+    "title": "2- While loop output ",
     "text": "Write down the output of the following Python code.\n(Hint: Make in your answer different lines if the output will be so.)\n\ni = 5\nwhile True:\n    if i%9 == 0:\n        break\n    print(i)\n    i += 1",
     "index": 300,
     "type": "open",

@@ -1,5 +1,5 @@
 {
-    "title": "List editing",
+    "title": "3- List editing",
     "text": "What will be the output of the following Python code?\n\nlist1 = [1, 3]\nlist2 = list1\nlist1[0] = 4\nprint(list2)",
     "index": 170,
     "type": "multiple_choice",

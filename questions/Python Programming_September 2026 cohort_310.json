@@ -1,5 +1,5 @@
 {
-    "title": "Numpy arrays shape",
+    "title": "4- Numpy arrays shape",
     "text": "What is the output of the following code that displays the dimension and size of the initialized array below?\n\narr = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])  \narr.shape\n",
     "index": 310,
     "type": "multiple_choice",
