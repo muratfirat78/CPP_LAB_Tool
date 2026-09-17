@@ -1,0 +1,20 @@
+{
+    "title": "Case sensitivity",
+    "text": "Is Python case sensitive when dealing with identifiers?",
+    "index": 10,
+    "type": "multiple_choice",
+    "choices": [
+        "No",
+        "Yes",
+        "Machine dependent",
+        "None of the mentioned"
+    ],
+    "correctness": [
+        false,
+        true,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

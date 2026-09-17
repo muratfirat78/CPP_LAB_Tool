@@ -1,0 +1,9 @@
+{
+    "title": "Function output",
+    "text": "What will be the output of the following Python function?\n\nprint(len([\"hello\",2, 4, 6]))",
+    "index": 100,
+    "type": "open",
+    "correctness": "4",
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

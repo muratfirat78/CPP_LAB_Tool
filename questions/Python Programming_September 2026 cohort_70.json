@@ -1,0 +1,20 @@
+{
+    "title": "Anonymous functions",
+    "text": "Python supports the creation of anonymous functions at runtime, using a construct called",
+    "index": 70,
+    "type": "multiple_choice",
+    "choices": [
+        "pi",
+        "anonymous",
+        "lambda",
+        "none of the mentioned"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

@@ -1,0 +1,20 @@
+{
+    "title": "Python syntax",
+    "text": "Which keyword is used for function in Python language?",
+    "index": 40,
+    "type": "multiple_choice",
+    "choices": [
+        "Function",
+        "def",
+        "Fun",
+        "Define"
+    ],
+    "correctness": [
+        false,
+        true,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}
