@@ -52,7 +52,7 @@ class MultipleChoiceQuestion:
             print(title)
             print("-" * 40)
             print(self.data.get("text", ""))
-            print("\nPrevious answer:", previous)
+            #print("\nPrevious answer:", previous)
 
     def check(self, _):
         self.result.clear_output()
