@@ -1,0 +1,20 @@
+{
+    "title": "List iteration&Slicing",
+    "text": "What will be the output of the following Python code snippet?\n\nfor i in [1, 2, 3, 4][::-1]:\n    print(i, end=' ')",
+    "index": 110,
+    "type": "multiple_choice",
+    "choices": [
+        "4 3 2 1 ",
+        "Error",
+        "1 2 3 4 ",
+        "None of the mentioned"
+    ],
+    "correctness": [
+        true,
+        false,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

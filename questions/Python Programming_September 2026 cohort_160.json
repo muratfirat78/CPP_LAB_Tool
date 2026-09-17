@@ -1,0 +1,20 @@
+{
+    "title": "Extending lists",
+    "text": "To add a new element to a list we use which Python command?",
+    "index": 160,
+    "type": "multiple_choice",
+    "choices": [
+        " list1.addEnd(5)",
+        " list1.addLast(5)",
+        "list1.append(5)",
+        "list1.add(5)"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

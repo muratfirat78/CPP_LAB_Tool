@@ -1,0 +1,20 @@
+{
+    "title": "Data type sets",
+    "text": "What will be the output of the following Python program?\n\nz=set('abc')\nz.add('san')\nz.update(set(['p', 'q']))\nprint(z)",
+    "index": 130,
+    "type": "multiple_choice",
+    "choices": [
+        "{‘a’, ‘c’, ‘c’, ‘p’, ‘q’, ‘s’, ‘a’, ‘n’}",
+        "{‘abc’, ‘p’, ‘q’, ‘san’}",
+        "{‘a’, ‘b’, ‘c’, ‘p’, ‘q’, ‘san’}",
+        "{‘a’, ‘b’, ‘c’, [‘p’, ‘q’], ‘san}"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}
