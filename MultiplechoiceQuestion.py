@@ -18,7 +18,7 @@ class MultipleChoiceQuestion:
 
         self.radio = widgets.RadioButtons(
             options=choices,
-            description="Choices:",
+            description="",
             style={"description_width": "initial"},
             layout=widgets.Layout(width="100%"),
             index=selected_index
