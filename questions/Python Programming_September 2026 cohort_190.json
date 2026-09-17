@@ -1,0 +1,20 @@
+{
+    "title": "List properties",
+    "text": "What will be the output of the following Python function?\n\nprint(len([\"hello\",2, 4, 6]))",
+    "index": 190,
+    "type": "multiple_choice",
+    "choices": [
+        "3",
+        "5",
+        "4",
+        "1"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

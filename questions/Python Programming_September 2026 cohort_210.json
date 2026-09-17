@@ -1,0 +1,20 @@
+{
+    "title": "Checking set inclusion",
+    "text": "What will be the output of the following Python code snippet?\n\nz=set('abc$de')\nprint('a' in z)",
+    "index": 210,
+    "type": "multiple_choice",
+    "choices": [
+        "Error",
+        "True",
+        "False",
+        "No output"
+    ],
+    "correctness": [
+        false,
+        true,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

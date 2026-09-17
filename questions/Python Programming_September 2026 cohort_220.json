@@ -1,0 +1,20 @@
+{
+    "title": "Power function",
+    "text": "What is output of print(math.pow(3, 2))?",
+    "index": 220,
+    "type": "multiple_choice",
+    "choices": [
+        "9.0",
+        "None",
+        "9",
+        "None of the above"
+    ],
+    "correctness": [
+        true,
+        false,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}
