@@ -1,0 +1,20 @@
+{
+    "title": "Round function",
+    "text": "Which of the following will run without errors?\n(Hint: You can type help(round) in the Python shell to see more about how it works.)",
+    "index": 270,
+    "type": "multiple_choice",
+    "choices": [
+        "round(45.8)",
+        "round(6352.898,2,5)",
+        "round()",
+        "round(7463.123,2,1)"
+    ],
+    "correctness": [
+        true,
+        false,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

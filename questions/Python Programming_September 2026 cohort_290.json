@@ -1,0 +1,20 @@
+{
+    "title": "Boolean expressions",
+    "text": "Which of the following Boolean expressions is not logically equivalent to the other three?",
+    "index": 290,
+    "type": "multiple_choice",
+    "choices": [
+        "not(-6<0 or-6>10)",
+        "-6>=0 and -6<=10",
+        "not(-6<10 or-6==10)",
+        "not(-6>10 or-6==10)"
+    ],
+    "correctness": [
+        false,
+        false,
+        false,
+        true
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

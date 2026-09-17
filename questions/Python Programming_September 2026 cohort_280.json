@@ -1,0 +1,20 @@
+{
+    "title": "Finding outputting function ",
+    "text": "Which of the following will print this output?",
+    "index": 280,
+    "type": "multiple_choice",
+    "choices": [
+        "print(‘hello’, ‘how’, ‘are’, ‘you’)",
+        "print(‘hello’, ‘how’, ‘are’, ‘you’ + ‘-‘ * 4)",
+        "print(‘hello-‘ + ‘how-are-you’)",
+        "print(‘hello’ + ‘-‘ + ‘how’ + ‘-‘ + ‘are’ + ‘you’)"
+    ],
+    "correctness": [
+        false,
+        false,
+        true,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}

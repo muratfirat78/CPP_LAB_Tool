@@ -1,0 +1,20 @@
+{
+    "title": "Code output",
+    "text": "What will be the output of the following Python code snippet?\n\ndef example(a):\n    a = a + '2'\n     a = a*2\n    return a\nexample(\"hello\")",
+    "index": 260,
+    "type": "multiple_choice",
+    "choices": [
+        "Indentation Error",
+        "Cannot perform mathematical operation on strings",
+        "hello2",
+        "hello2hello2"
+    ],
+    "correctness": [
+        true,
+        false,
+        false,
+        false
+    ],
+    "component": "Python Programming",
+    "run": "September 2026 cohort"
+}
