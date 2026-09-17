@@ -129,6 +129,16 @@ class Overview:
     def plot_results_overview(self, data):
 
         questions = self.get_questions(data)
+        if not questions:
+            print("No data available.")
+            return
+
+        total_students = len(data)
+
+        if total_students == 0:
+            print("No students found.")
+            return
+        
         total_students = len(data)
 
         rows = []
@@ -198,6 +208,9 @@ class Overview:
 
 
     def plot_progress_heatmap(self, data):
+        if not data:
+            print("No data available.")
+            return
         questions = self.get_questions(data)
         df = pd.DataFrame(
             float("nan"),
