@@ -1,0 +1,8 @@
+{
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort",
+  "title": "2- Sampling: Exponential distribution",
+  "type": "open",
+  "text": "In the Statistics Dashboard Sampling tab, repeat Exercise 1 using an Exponential distribution with mean 10. What differences do you observe compared to the Normal distribution?",
+  "index": 2
+}

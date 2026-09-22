@@ -1,0 +1,10 @@
+{
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort",
+  "title": "13- Outlier Detection",
+  "type": "programming",
+  "text": "Note: make sure you have completed Exercise 12 first and that 'shoppings' is defined in the code cell.\n\nUsing the 'shoppings' dataframe, create boxplots for 'shoppingcost' and 'shoppingsize'. Do you observe outliers?",
+  "index": 13,
+  "tests": {},
+  "answer": "sns.boxplot(shoppings[['shoppingsize','shoppingcost']])\nBoxplots show outliers as points beyond the whiskers. Observe if there are extreme values in shoppingcost or shoppingsize."
+}

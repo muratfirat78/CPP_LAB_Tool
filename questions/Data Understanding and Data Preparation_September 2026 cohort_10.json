@@ -1,0 +1,8 @@
+{
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort",
+  "title": "10- ANOVA",
+  "type": "open",
+  "text": "In the Statistics Dashboard, go to the ANOVA tab. Load each of the available datasets, assign the categorical and value features, and click Solve ANOVA. For each dataset: does the ANOVA result align with the boxplots? Describe what you observe.",
+  "index": 10
+}

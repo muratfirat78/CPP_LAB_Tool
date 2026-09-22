@@ -4,18 +4,10 @@ class ProgrammingQuestion:
     def __init__(self, data, controller):
         self.data = data
         self.controller = controller
-        self.output = widgets.Output()
-
-        saved = self.controller.questionController.answers.get(
-            self.data.get("title", "No title"),
-            ""
-        )
+        self.output = widgets.Output(layout=widgets.Layout(width="100%"))
 
         self.editor = widgets.Textarea(
-            value=saved if saved != "unanswered" else "",
-            placeholder="Previous answer",
-            disabled=True,
-            layout=widgets.Layout(width="100%", height="200px")
+            layout=widgets.Layout(display='none')
         )
 
         self.submit_button = widgets.Button(
@@ -26,6 +18,9 @@ class ProgrammingQuestion:
         self.submit_button.on_click(self.submit)
 
         self.run_output = widgets.Output()
+        self.answer_output = widgets.Output(layout=widgets.Layout(width="100%"))
+
+        self.render_text()
 
     def get_codecell(self):
         if self.controller.online_version:
@@ -45,30 +40,35 @@ class ProgrammingQuestion:
                 code_lines = []
 
         return code_lines
-    
+
     def get_correct_tests(self, results):
-      return sum(1 for v in results.values() if v['correct'])
+        return sum(1 for v in results.values() if v['correct'])
 
     def get_ui(self):
-        self.render_text()
-
         return widgets.VBox([
             self.output,
             self.editor,
             self.submit_button,
-            self.run_output
+            self.run_output,
+            self.answer_output
         ])
 
     def render_text(self):
         self.output.clear_output()
         with self.output:
-            print(self.data.get("title", "No title"))
-            print("-" * 40)
-            print(self.data.get("text", ""))
+            from IPython.display import display, HTML
+            display(HTML(f"""
+                <b>{self.data.get("title", "No title")}</b>
+                <hr>
+                <p style="white-space: pre-wrap; font-family: monospace;">{self.data.get("text", "")}</p>
+            """))
 
     def check_answer(self, code_lines):
-        code_str = "\n".join(code_lines)
+        tests = self.data.get("tests", {})
+        if not tests:
+            return "", True
 
+        code_str = "\n".join(code_lines)
         try:
             local_env = {}
             exec(code_str, {}, local_env)
@@ -79,31 +79,16 @@ class ProgrammingQuestion:
             return "Error: 'result' not defined", False
 
         student_result = local_env["result"]
-
         if not isinstance(student_result, dict):
             return "Error: result must be a dictionary", False
 
-        test_result = {}
-
-        for key, expected_value in self.data.get("tests", {}).items():
-            student_value = student_result.get(key, None)
-
-            test_result[key] = {
-                "result": "Correct" if str(student_value) == str(expected_value) else "Incorrect",
-                "expected": expected_value,
-                "student": student_value,
-                "correct": str(student_value) == str(expected_value),
-                "name": key
-            }
-        
         all_passed = True
         output_lines = []
-
-        for name, info in test_result.items():
-            if info["correct"]:
-                output_lines.append(f"{name}: passed")
-            else:
-                output_lines.append(f"{name}: not passed")
+        for key, expected_value in tests.items():
+            student_value = student_result.get(key, None)
+            correct = str(student_value) == str(expected_value)
+            output_lines.append(f"{key}: {'passed' if correct else 'not passed'}")
+            if not correct:
                 all_passed = False
 
         return "\n".join(output_lines), all_passed
@@ -112,12 +97,23 @@ class ProgrammingQuestion:
         code = self.get_codecell()
         message, correct = self.check_answer(code)
         code_str = "\n".join(code)
-        if correct:
-            correct_str = 'correct'
-        else:
-            correct_str = 'incorrect' 
-        self.controller.questionController.save_answer(self.data.get("title", "No title"),code_str, correct_str)
+        correct_str = 'correct' if correct else 'incorrect'
+        self.controller.questionController.save_answer(self.data.get("title", "No title"), code_str, correct_str)
+
         self.run_output.clear_output()
         with self.run_output:
-            print("Execution finished")
-            print(message)
+            print("Submitted.")
+            if message:
+                print(message)
+
+        model_answer = self.data.get("answer", None)
+        self.answer_output.clear_output()
+        if model_answer:
+            with self.answer_output:
+                from IPython.display import display, HTML
+                display(HTML(f"""
+                    <div style="background:#f0f7ff; border-left:4px solid #2196F3; padding:10px; margin-top:10px;">
+                        <b>Model answer:</b><br>
+                        <p style="white-space: pre-wrap; font-family: monospace;">{model_answer}</p>
+                    </div>
+                """))

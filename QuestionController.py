@@ -11,6 +11,8 @@ class QuestionController:
     def read_questions(self):
         questions = []
         for filename in os.listdir("./questions"):
+            if not filename.endswith(".json"):
+                continue
             path = f"./questions/{filename}"
 
             with open(path, encoding="utf-8") as f:

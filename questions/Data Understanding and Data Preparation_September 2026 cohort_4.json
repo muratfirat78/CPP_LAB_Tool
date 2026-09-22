@@ -1,0 +1,8 @@
+{
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort",
+  "title": "4- Hypothesis Testing: LAB-Question1",
+  "type": "open",
+  "text": "Open the Statistics Dashboard, go to the Hypothesis Testing tab, and select LAB-Question1 from the Question dropdown. A researcher believes the average calorie consumption is higher than 1500 calories/day. Sample: n=30, mean=1600, sample stdev=150, significance level=0.05. Solve and report your conclusion.",
+  "index": 4
+}

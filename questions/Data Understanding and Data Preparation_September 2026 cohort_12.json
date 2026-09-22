@@ -1,0 +1,10 @@
+{
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort",
+  "title": "12- Data Aggregation",
+  "type": "programming",
+  "text": "Note: make sure you have completed Exercise 11 first and that 'shoppingdata' is defined in the code cell.\n\nAggregate the 'shoppingdata' dataframe from product level to shopping level using the transaction id. Create a dataframe called 'shoppings' with columns: shoppingsize (number of items), shoppingcost (total price), and producttypes (number of distinct product types).",
+  "index": 12,
+  "tests": {},
+  "answer": "shoppings = shoppingdata.groupby(['transaction'])[['product_id','price']].agg(lambda x:list(x)).reset_index()\nshoppings = shoppings.rename(columns={shoppings.columns[-1]: 'price_list'})\nshoppings['shoppingsize'] = [len(x) for x in shoppings['price_list']]\nshoppings['producttypes'] = [len(set(x)) for x in shoppings['product_id']]\nshoppings['shoppingcost'] = [sum(x) for x in shoppings['price_list']]"
+}

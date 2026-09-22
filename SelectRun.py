@@ -40,6 +40,8 @@ class SelectRun:
         runs = set()
 
         for filename in os.listdir("./questions"):
+            if not filename.endswith(".json"):
+                continue
             with open(f"./questions/{filename}", encoding="utf-8") as f:
                 data = json.load(f)
 

@@ -31,6 +31,8 @@ class SelectComponent:
 
     def set_components(self):
         for filename in os.listdir("./questions"):
+            if not filename.endswith(".json"):
+                continue
             with open(f"./questions/{filename}", encoding="utf-8") as f:
                 self.components.add(json.load(f)["component"])
         
