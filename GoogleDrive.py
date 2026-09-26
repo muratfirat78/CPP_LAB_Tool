@@ -15,7 +15,7 @@ import threading
 class GoogleDrive:    
         def __init__(self, visualManager=None):      
             self.drive_service = build('drive', 'v3')
-            self.folderid = '1oAYG3Qyyp-N7mXyoGg9ZQEckMOMotYMQ'
+            self.folderid = '19lwH_Oah80FCcqnfhI72wuXVCkzQz0-D'
             self.userid = None
             self.userid = self.register()
             self.get_performances()
