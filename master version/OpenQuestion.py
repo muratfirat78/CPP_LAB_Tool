@@ -56,14 +56,6 @@ class OpenQuestion:
         data = self.get_data()
         self.controller.questionController.save_question(data)
     
-    def get_data(self):
-        return {
-            "title": self.title.value,
-            "text": self.text.value,
-            "index": self.index.value,
-            "type": "open",
-            "correctness": self.correctness.value
-        }
 
     def get_ui(self):
         return self.ui
