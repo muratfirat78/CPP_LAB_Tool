@@ -2,23 +2,21 @@ import ipywidgets as widgets
 from IPython.display import display
 from SelectComponent import SelectComponent
 from SelectRun import SelectRun
-from QuestionController import QuestionController
-from Quiz import Quiz
+from Overview import Overview
 
 class Controller:
-    def __init__(self,drive, online_version):
+    def __init__(self, drive, online_version):
         self.component = None
         self.run = None
         self.drive = drive
         self.online_version = online_version
         self.selectComponent = SelectComponent(self)
         self.selectRun = SelectRun(self)
-        self.quiz = Quiz(self)
-        self.questionController = QuestionController(self)
+        self.overview = Overview(self)
         self.ui = widgets.VBox([
             self.selectComponent.get_ui(),
             self.selectRun.get_ui(),
-            self.quiz.get_ui()
+            self.overview.get_ui()
         ])
 
     def start(self):
@@ -27,14 +25,6 @@ class Controller:
     def show_run_selection(self):
         self.selectRun.set_runs(self.component)
         self.selectRun.show()
-    
-    def start_quiz(self):
-        self.questions = self.questionController.read_questions()
-        self.quiz.update_questions()
-        self.quiz.show()
-        
-    def get_next_index(self):
-        if not self.questions:
-            return 10
 
-        return max(q["index"] for q in self.questions) + 10
+    def start_quiz(self):
+        self.overview.refresh()
