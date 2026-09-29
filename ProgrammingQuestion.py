@@ -106,7 +106,7 @@ class ProgrammingQuestion:
             if message:
                 print(message)
 
-        model_answer = self.data.get("solution", None)
+        model_answer = self.data.get("answer", None)
         self.answer_output.clear_output()
         if model_answer:
             with self.answer_output:

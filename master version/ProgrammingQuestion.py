@@ -21,9 +21,9 @@ class ProgrammingQuestion:
             description="Index:"
         )
 
-        self.solution = widgets.Textarea(
-            value="\n".join(data.get("solution", [])),
-            description="Solution:",
+        self.answer = widgets.Textarea(
+            value="\n".join(data.get("answer", [])),
+            description="Answer:",
             layout=widgets.Layout(width="100%", height="200px")
         )
 
@@ -59,8 +59,8 @@ class ProgrammingQuestion:
             widgets.HTML("<h4>Tests</h4>"),
             self.tests_box,
             self.add_test_button,
-            widgets.HTML("<h4>Solution</h4>"),
-            self.solution,
+            widgets.HTML("<h4>Answer</h4>"),
+            self.answer,
             self.save_button
         ])
 
@@ -117,7 +117,7 @@ class ProgrammingQuestion:
             "index": self.index.value,
             "type": "programming",
             "tests": tests,
-            "solution": self.solution.value.splitlines()
+            "answer": self.answer.value.splitlines()
         }
 
     def save_question(self, _):

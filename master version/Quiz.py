@@ -102,7 +102,7 @@ class Quiz:
                 "text": "",
                 "index":self.controller.get_next_index(),
                 "type": "open",
-                "solution": []
+                "answer": []
             }
 
         elif qtype == "multiple_choice":
@@ -113,7 +113,7 @@ class Quiz:
                 "type": "multiple_choice",
                 "options": [],
                 "correct": [],
-                "solution": []
+                "answer": []
             }
 
         elif qtype == "programming":
@@ -125,7 +125,7 @@ class Quiz:
                 "run": "",
                 "type": "programming",
                 "tests": {},
-                "solution": []
+                "answer": []
             }
 
         self.controller.questions.append(new_question)
