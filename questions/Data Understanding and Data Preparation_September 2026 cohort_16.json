@@ -1,0 +1,15 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_16",
+  "text": "Which of the scaling methods involves statistical parameters?",
+  "index": 16,
+  "type": "multiple_choice",
+  "choices": [
+    "One-hot encoding",
+    "Normalization",
+    "PCA method",
+    "Standardization"
+  ],
+  "correctness": [false, false, false, true],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}

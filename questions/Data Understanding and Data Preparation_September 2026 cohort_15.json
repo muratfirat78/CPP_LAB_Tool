@@ -1,0 +1,15 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_15",
+  "text": "What is the consequence of data leakage?",
+  "index": 15,
+  "type": "multiple_choice",
+  "choices": [
+    "Better performing ML models",
+    "Increasing trust in ML in the business",
+    "Unrealistic performance evaluation of ML models",
+    "Efficient data processing steps"
+  ],
+  "correctness": [false, false, true, false],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}

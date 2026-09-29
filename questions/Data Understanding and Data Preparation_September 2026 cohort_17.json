@@ -1,0 +1,13 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_17",
+  "text": "Should we apply the 'Replace-mean' method of missing values handling before or after split?",
+  "index": 17,
+  "type": "multiple_choice",
+  "choices": [
+    "Before",
+    "After"
+  ],
+  "correctness": [false, true],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}

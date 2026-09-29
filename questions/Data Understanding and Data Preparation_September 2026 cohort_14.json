@@ -1,0 +1,15 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_14",
+  "text": "Why are scaling methods helpful in training Machine Learning models?",
+  "index": 14,
+  "type": "multiple_choice",
+  "choices": [
+    "The ranges of numerical features are unified",
+    "Different numerical features can get comparable",
+    "Accelerates training process of Machine Learning models",
+    "All of the above mentioned"
+  ],
+  "correctness": [false, false, false, true],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}

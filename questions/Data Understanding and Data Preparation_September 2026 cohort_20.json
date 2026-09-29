@@ -1,0 +1,15 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_20",
+  "text": "Which is correct for class balancing?",
+  "index": 20,
+  "type": "multiple_choice",
+  "choices": [
+    "Applied to all kind of features",
+    "Applied to only target features in all prediction tasks",
+    "Applied to only independent features",
+    "Applied to only target in classification tasks"
+  ],
+  "correctness": [false, false, false, true],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}

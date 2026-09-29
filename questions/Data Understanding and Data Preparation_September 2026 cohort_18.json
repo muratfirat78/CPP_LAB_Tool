@@ -1,0 +1,15 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_18",
+  "text": "We have a dataset which has 9% missing values. What should we do for handling it?",
+  "index": 18,
+  "type": "multiple_choice",
+  "choices": [
+    "Remove missing values",
+    "Applying Replace-mean method",
+    "First splitting it and applying replace-mean",
+    "Keeping all these rows not to lose any data content"
+  ],
+  "correctness": [false, false, true, false],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}

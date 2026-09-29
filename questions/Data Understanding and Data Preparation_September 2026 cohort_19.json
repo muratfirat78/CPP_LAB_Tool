@@ -1,0 +1,15 @@
+{
+  "title": "Data Understanding and Data Preparation_September 2026 cohort_19",
+  "text": "In a given dataset, we have two features that are highly correlated. What is the best to do?",
+  "index": 19,
+  "type": "multiple_choice",
+  "choices": [
+    "Remove one of them",
+    "Remove both of them",
+    "Apply scaling method",
+    "Apply PCA method to obtain one combined feature"
+  ],
+  "correctness": [false, false, false, true],
+  "component": "Data Understanding and Data Preparation",
+  "run": "September 2026 cohort"
+}
