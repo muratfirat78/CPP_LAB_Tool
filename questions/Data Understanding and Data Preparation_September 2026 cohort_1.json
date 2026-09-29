@@ -4,5 +4,6 @@
   "title": "1- Sampling: Normal distribution",
   "type": "open",
   "text": "Open the Statistics Dashboard and go to the Sampling tab. Create an empirical distribution of Normal type with size 10000, mean 10, and standard deviation 2. Make 20 samples of size 5, 15 samples of size 10, and 10 samples of size 25. For each sampling, describe how close the distribution of sample means is to a normal distribution as sample size increases.",
-  "index": 1
+  "index": 1,
+  "answer": "As sample size increases (5 → 10 → 25), the distribution of sample means becomes closer to a normal distribution with less spread. This illustrates the Central Limit Theorem: larger samples produce sample means that are more normally distributed and cluster more tightly around the population mean of 10."
 }

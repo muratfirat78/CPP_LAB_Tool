@@ -4,5 +4,6 @@
   "title": "3- Sampling: Uniform distribution",
   "type": "open",
   "text": "In the Statistics Dashboard Sampling tab, repeat Exercise 1 using a Uniform distribution with mean 10 and standard deviation 2. What differences do you observe compared to the Normal and Exponential distributions?",
-  "index": 3
+  "index": 3,
+  "answer": "The Uniform distribution is symmetric but flat. As sample size increases, the distribution of sample means approaches normality faster than the Exponential, but slower than the Normal. The spread of sample means decreases with larger samples."
 }
