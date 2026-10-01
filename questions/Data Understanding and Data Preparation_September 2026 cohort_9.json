@@ -2,7 +2,15 @@
   "component": "Data Understanding and Data Preparation",
   "run": "September 2026 cohort",
   "title": "9- Hypothesis Testing: LAB-Question6",
-  "type": "open",
+  "type": "multiple_choice",
   "text": "In the Statistics Dashboard Hypothesis Testing tab, select LAB-Question6. Test whether men spend at least $7 more than women at the baseball park. Men: n=100, mean=$200, stdev=$40. Women: n=100, mean=$190, stdev=$20. Significance level=0.05. Solve and report your conclusion.",
-  "index": 9
+  "index": 9,
+  "choices": [
+    "Reject H0",
+    "Fail to reject H0"
+  ],
+  "correctness": [
+    false,
+    true
+  ]
 }

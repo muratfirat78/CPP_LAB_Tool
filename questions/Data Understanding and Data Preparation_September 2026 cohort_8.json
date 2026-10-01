@@ -2,7 +2,15 @@
   "component": "Data Understanding and Data Preparation",
   "run": "September 2026 cohort",
   "title": "8- Hypothesis Testing: LAB-Question5",
-  "type": "open",
+  "type": "multiple_choice",
   "text": "In the Statistics Dashboard Hypothesis Testing tab, select LAB-Question5. Test whether new batteries run at least 7 minutes longer than old batteries. Old: n=100, mean=200, stdev=20. New: n=100, mean=200, stdev=40. Significance level=0.05. Solve and report your conclusion.",
-  "index": 8
+  "index": 8,
+  "choices": [
+    "Reject H0",
+    "Fail to reject H0"
+  ],
+  "correctness": [
+    false,
+    true
+  ]
 }

@@ -2,7 +2,15 @@
   "component": "Data Understanding and Data Preparation",
   "run": "September 2026 cohort",
   "title": "5- Hypothesis Testing: LAB-Question2",
-  "type": "open",
+  "type": "multiple_choice",
   "text": "In the Statistics Dashboard Hypothesis Testing tab, select LAB-Question2. A consumer agency tests whether a battery's mean lifespan is 40 hours. Sample: n=20, mean=38.5, sample stdev=3, significance level=0.02. Solve and report your conclusion.",
-  "index": 5
+  "index": 5,
+  "choices": [
+    "Reject H0",
+    "Fail to reject H0"
+  ],
+  "correctness": [
+    false,
+    true
+  ]
 }
