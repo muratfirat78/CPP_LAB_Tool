@@ -23,7 +23,8 @@ class GoogleDrive:
             logging.getLogger("google_auth_httplib2").setLevel(logging.ERROR)
 
         def update_status(self, text):
-            self.visualManager.download_status.value = text
+            if self.visualManager is not None:
+                self.visualManager.download_status.value = text
 
         def _json_safe(self, obj):
             if isinstance(obj, np.integer):
