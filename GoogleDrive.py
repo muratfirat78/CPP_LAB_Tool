@@ -219,11 +219,10 @@ class GoogleDrive:
                 self.userid = userid
 
         def upload_file(self, filepath):
-
             filename = os.path.basename(filepath)
+            folderid = self.get_folder(self.userid)
 
-            # Controleer of bestand al bestaat in de hoofdmap
-            query = f"name='{filename}' and '{self.folderid}' in parents and trashed=false"
+            query = f"name='{filename}' and '{folderid}' in parents and trashed=false"
             response = self.drive_service.files().list(
                 q=query,
                 spaces='drive',
@@ -245,7 +244,7 @@ class GoogleDrive:
             else:
                 file_metadata = {
                     'name': filename,
-                    'parents': [self.folderid]
+                    'parents': [folderid]
                 }
 
                 uploaded_file = self.drive_service.files().create(

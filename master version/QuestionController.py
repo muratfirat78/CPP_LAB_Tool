@@ -19,7 +19,7 @@ class QuestionController:
                 if (data["component"] == self.controller.component and
                     data["run"] == self.controller.run):
                     questions.append(data)  
-        return questions 
+        return sorted(questions, key=lambda q: q["index"])
     
     def delete_question(self, index):
         filename = (

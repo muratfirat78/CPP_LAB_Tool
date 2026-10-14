@@ -3,7 +3,7 @@
   "run": "September 2026 cohort",
   "title": "Ex4 - Open: Bar chart interpretation",
   "type": "open",
-  "text": "Look at the grouped bar chart of facecream and facewash sales per month. In which months does facecream outsell facewash? What pattern do you notice overall?",
+  "text": "Run the code below in a new cell:\n\nmonthList = df['month_number'].tolist()\nfaceCremSalesData = df['facecream'].tolist()\nfaceWashSalesData = df['facewash'].tolist()\nplt.bar([a-0.25 for a in monthList], faceCremSalesData, width=0.25, label='Face Cream sales data', align='edge')\nplt.bar([a+0.25 for a in monthList], faceWashSalesData, width=-0.25, label='Face Wash sales data', align='edge')\nplt.legend(loc='upper left')\nplt.xticks(monthList)\nplt.title('Facewash and facecream sales data')\nplt.show()\n\nLook at the grouped bar chart. In which months does facecream outsell facewash? What pattern do you notice overall?",
   "index": 4,
   "answer": "Facecream outsells facewash in most months. Both products show relatively stable sales. The bars are offset using width and alignment to display side by side per month."
 }

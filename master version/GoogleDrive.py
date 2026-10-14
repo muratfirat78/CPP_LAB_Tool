@@ -84,34 +84,43 @@ class GoogleDrive:
                     self.download(file['id'], filename, self.userid)
 
         def get_performances_master(self):
-            query = f"'{self.folderid}' in parents and trashed=false"
-            results = self.drive_service.files().list(q=query, fields="files(id, name, modifiedTime)").execute()
-            files = results.get('files', [])
-
-            total_files = len(files)
-            downloaded_files = 0
+            query = f"'{self.folderid}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false"
+            results = self.drive_service.files().list(q=query, fields="files(id, name)").execute()
+            folders = results.get('files', [])
 
             save_path = '/content/CPP_LAB_Tool/drive/'
             os.makedirs(save_path, exist_ok=True)
 
-            for file in files:
-                filename = file['name']
-                file_location = os.path.join(save_path, filename)
+            total_files = 0
+            downloaded_files = 0
 
-                download_file = False
-                if os.path.exists(file_location):
-                    last_edited_local = datetime.datetime.fromtimestamp(os.path.getmtime(file_location))
-                    last_edited_drive = datetime.datetime.fromisoformat(file['modifiedTime'].replace('Z', '+00:00')).replace(tzinfo=None)
-                    if last_edited_local < last_edited_drive:
+            for folder in folders:
+                query2 = f"'{folder['id']}' in parents and trashed=false"
+                results2 = self.drive_service.files().list(q=query2, fields="files(id, name, modifiedTime)").execute()
+                files = results2.get('files', [])
+                total_files += len(files)
+
+                for file in files:
+                    filename = file['name']
+                    if not filename.startswith('overview_'):
+                        continue
+
+                    file_location = os.path.join(save_path, filename)
+                    download_file = False
+
+                    if os.path.exists(file_location):
+                        last_edited_local = datetime.datetime.fromtimestamp(os.path.getmtime(file_location))
+                        last_edited_drive = datetime.datetime.fromisoformat(file['modifiedTime'].replace('Z', '+00:00')).replace(tzinfo=None)
+                        if last_edited_local < last_edited_drive:
+                            download_file = True
+                    else:
                         download_file = True
-                else:
-                    download_file = True
 
-                if download_file:
-                    self.download(file['id'], filename, None, save_path=save_path)
+                    if download_file:
+                        self.download(file['id'], filename, None, save_path=save_path)
 
-                downloaded_files += 1
-                self.update_status(f"Download status: {downloaded_files}/{total_files} files downloaded")
+                    downloaded_files += 1
+                    self.update_status(f"Download status: {downloaded_files}/{total_files} files downloaded")
 
             self.update_status("Download finished")
 
