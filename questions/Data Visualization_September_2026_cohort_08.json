@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex8 - Open: Time series interpretation",
+  "type": "open",
+  "text": "Look at the temperature time series chart. Describe the pattern: is there a daily cycle visible? Any overall trend? What time period does the dataset cover?",
+  "index": 8,
+  "answer": "A clear daily temperature cycle is visible. The dataset covers a few days starting March 20, 2015. The solution uses ax.plot_date(dfTemp['timestamp'], dfTemp['temperature'], color='black')."
+}

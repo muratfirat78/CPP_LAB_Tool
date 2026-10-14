@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex4 - Open: Bar chart interpretation",
+  "type": "open",
+  "text": "Look at the grouped bar chart of facecream and facewash sales per month. In which months does facecream outsell facewash? What pattern do you notice overall?",
+  "index": 4,
+  "answer": "Facecream outsells facewash in most months. Both products show relatively stable sales. The bars are offset using width and alignment to display side by side per month."
+}

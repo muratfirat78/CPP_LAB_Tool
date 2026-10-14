@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex9 - Code: Temperature line plot",
+  "type": "programming",
+  "text": "Using the temperature dataset, create a time series line plot (no markers, only a line) using ax.plot_date() with linestyle='-' and marker='None'.\n\nDataset is already loaded as dfTemp with columns: timestamp, temperature.",
+  "index": 9,
+  "answer": "fig = plt.figure(figsize=(16,10))\nax = fig.add_subplot(111)\nax.plot_date(dfTemp['timestamp'], dfTemp['temperature'], color='black', linestyle='-', marker='None')\nplt.title('Temperature readings at different times')\nplt.xlabel('Time')\nplt.ylabel('Temperature')"
+}

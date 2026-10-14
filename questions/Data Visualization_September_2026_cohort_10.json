@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex10 - Code: Relplot transaction data",
+  "type": "programming",
+  "text": "Using the transaction dataset, plot weekly sales for products 'f_15' and 'f_22' using sns.relplot(). Use x='week', y='sales', hue='product_id', size='discount'.\n\nThe merged dataframe is available as weeklydemand_df with columns: week, product_id, discount, price, sales.",
+  "index": 10,
+  "answer": "sns.relplot(x='week', y='sales', hue='product_id', size='discount',\n    data=weeklydemand_df[(weeklydemand_df['product_id']=='f_15') | (weeklydemand_df['product_id']=='f_22')],\n    sizes=(40, 300), alpha=.5, palette='muted', height=9)"
+}

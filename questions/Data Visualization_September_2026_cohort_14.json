@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex14 - Code: Joyplot iris",
+  "type": "programming",
+  "text": "Using the iris dataset (dfIris), create a joyplot showing distributions of 'sepal.width' and 'petal.length' per variety (Setosa, Versicolor, Virginica) using joypy.joyplot().\n\nNote: install joypy first with pip install joypy.",
+  "index": 14,
+  "answer": "import joypy\nfig, axes = joypy.joyplot(dfIris, by='variety', column=['sepal.width','petal.length'], ylim='own', legend=True)"
+}

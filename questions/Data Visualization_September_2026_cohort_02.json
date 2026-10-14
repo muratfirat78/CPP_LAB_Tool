@@ -1,0 +1,11 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex1 - Q2: X-axis column",
+  "type": "multiple_choice",
+  "text": "Which column from the company sales dataset should go on the X-axis to show profit over time? You can find the datasets below the tool and you can run the code.",
+  "choices": ["total_profit", "facecream", "month_number", "shampoo"],
+  "correctness": [false, false, true, false],
+  "index": 2,
+  "answer": "month_number"
+}

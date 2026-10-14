@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex6 - Open: Marks and channels",
+  "type": "open",
+  "text": "Look at the scatter plot of the automobile dataset (acceleration vs mpg). Identify: (1) what the marks are, (2) which visual channels are used, and (3) what each channel encodes.",
+  "index": 6,
+  "answer": "Marks: points/dots. Channels: position x = acceleration, position y = mpg. No color channel in Ex6 — all points are black. Lower acceleration values tend to correspond to lower mpg."
+}

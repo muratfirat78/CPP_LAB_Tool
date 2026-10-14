@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex15 - Code: Violin and box plot iris",
+  "type": "programming",
+  "text": "Using the iris dataset (dfIris), plot a violin plot and a box plot side by side in one figure. Both plots show variety on the x-axis and sepal.width on the y-axis.",
+  "index": 15,
+  "answer": "fig, axes = plt.subplots(1,2)\nsns.violinplot(x='variety', y='sepal.width', data=dfIris, ax=axes[0])\nsns.boxplot(x='variety', y='sepal.width', data=dfIris, ax=axes[1])"
+}

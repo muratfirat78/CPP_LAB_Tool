@@ -1,0 +1,11 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex1 - Q1: Plot type for trends over time",
+  "type": "multiple_choice",
+  "text": "Which plot type best shows a single variable changing over time?",
+  "choices": ["Bar chart", "Line plot", "Pie chart", "Scatter plot"],
+  "correctness": [false, true, false, false],
+  "index": 1,
+  "answer": "Line plot"
+}

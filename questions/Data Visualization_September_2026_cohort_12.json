@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex12 - Code: Distplot items per shopping",
+  "type": "programming",
+  "text": "Using Ex5_df (aggregated transaction data with column items_pershopping), plot the distribution of number of items per shopping using sns.distplot().",
+  "index": 12,
+  "answer": "sns.distplot(Ex5_df['items_pershopping'])"
+}

@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex16 - Code: Stacked bar chart iris",
+  "type": "programming",
+  "text": "Using the iris dataset (dfIris), plot a stacked histogram of sepal.width with variety as hue using sns.histplot() with multiple='stack'.",
+  "index": 16,
+  "answer": "sns.histplot(data=dfIris, x='sepal.width', hue='variety', multiple='stack')\nplt.title('Sepal.width distribution')\nplt.xlabel('sepal.width')\nplt.ylabel('Value')"
+}

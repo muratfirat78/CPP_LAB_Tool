@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex5 - Open: Pie chart interpretation",
+  "type": "open",
+  "text": "Look at the pie chart of annual product sales. Which product has the largest share? What is a limitation of a pie chart compared to a bar chart for this data?",
+  "index": 5,
+  "answer": "Bathingsoap has the largest share. A limitation of pie charts is that small differences between slices are hard to compare accurately. The solution uses df['column'].sum() per product and plt.pie() with autopct for percentages."
+}

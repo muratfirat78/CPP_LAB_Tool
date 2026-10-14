@@ -15,7 +15,7 @@ import threading
 class GoogleDrive:    
         def __init__(self, visualManager=None):      
             self.drive_service = build('drive', 'v3')
-            self.folderid = '1AdbSOXY2EMdLoKjNaX5D3DG3uMmpAn8P'
+            self.folderid = '1rpZYXfRwM8n6-cTKkntlXDBNDhS7a1gW'
             self.userid = None
             self.userid = self.register()
             self.get_performances()
@@ -47,16 +47,14 @@ class GoogleDrive:
                     return files[0]['id']
                     time.sleep(2 ** attempt)
 
-        def download(self, file_id, file_name, userid):
+        def download(self, file_id, file_name, userid, save_path=None):
+            if save_path is None:
+                save_path = "/content/CPP_LAB_Tool/drive"
+            os.makedirs(save_path, exist_ok=True)
+
             request = self.drive_service.files().get_media(fileId=file_id)
-
-            #create the userid folder if not existing
-            path = "/content/CPP_LAB_Tool/drive"
-            os.makedirs(path, exist_ok=True)
-
-            file_path = os.path.join(path, file_name)
-
-            fh = io.FileIO(f"{file_path}", 'wb')
+            file_path = os.path.join(save_path, file_name)
+            fh = io.FileIO(file_path, 'wb')
             downloader = googleapiclient.http.MediaIoBaseDownload(fh, request)
             done = False
             while done is False:
@@ -87,45 +85,33 @@ class GoogleDrive:
 
         def get_performances_master(self):
             query = f"'{self.folderid}' in parents and trashed=false"
-            results = self.drive_service.files().list(q=query, fields="files(id, name)").execute()
-            folders = results.get('files', [])
+            results = self.drive_service.files().list(q=query, fields="files(id, name, modifiedTime)").execute()
+            files = results.get('files', [])
 
-            total_files = sum(
-                len(self.drive_service.files().list(q=f"'{folder['id']}' in parents and trashed=false",
-                                                    fields="files(id)").execute().get('files', []))
-                for folder in folders
-            )
+            total_files = len(files)
             downloaded_files = 0
 
-            save_path = '/content/drive/'
-            if not os.path.exists(save_path):
-                os.makedirs(save_path)
+            save_path = '/content/CPP_LAB_Tool/drive/'
+            os.makedirs(save_path, exist_ok=True)
 
-            for folder in folders:
-                if not os.path.exists(os.path.join(save_path, folder['name'])):
-                    os.makedirs(os.path.join(save_path, folder['name']))
-                query = f"'{folder['id']}' in parents and trashed=false"
-                results2 = self.drive_service.files().list(q=query, fields="files(id, name, modifiedTime)").execute()
-                files = results2.get('files', [])
-                for file in files:
-                    download_file = False
-                    file_location = os.path.join(save_path,folder['name'], file['name'])
-                    if os.path.exists(file_location):
-                        #already exists, check if it needs to be updated
-                        last_edited_local = datetime.fromtimestamp(os.path.getmtime(file_location))
-                        last_edited_drive = datetime.fromisoformat(file['modifiedTime'].replace('Z', '+00:00')).replace(tzinfo=None)
-                        if last_edited_local < last_edited_drive:
-                            download_file = True
-                    else:
-                        #File does not exist yet
+            for file in files:
+                filename = file['name']
+                file_location = os.path.join(save_path, filename)
+
+                download_file = False
+                if os.path.exists(file_location):
+                    last_edited_local = datetime.datetime.fromtimestamp(os.path.getmtime(file_location))
+                    last_edited_drive = datetime.datetime.fromisoformat(file['modifiedTime'].replace('Z', '+00:00')).replace(tzinfo=None)
+                    if last_edited_local < last_edited_drive:
                         download_file = True
-                    if download_file:
-                        # self.download(file['id'], file['name'], folder['name'])
-                        threading.Thread(target=self.download(file['id'], file['name'], folder['name'])).start()
+                else:
+                    download_file = True
 
+                if download_file:
+                    self.download(file['id'], filename, None, save_path=save_path)
 
-                    downloaded_files += 1
-                    self.update_status(f"Download status: {downloaded_files}/{total_files} files downloaded")
+                downloaded_files += 1
+                self.update_status(f"Download status: {downloaded_files}/{total_files} files downloaded")
 
             self.update_status("Download finished")
 
@@ -181,8 +167,8 @@ class GoogleDrive:
 
 
         def write_answer_to_file(self, answer, filename):
-            import json
             with open(f"/content/drive/{self.userid}/{filename}", "w", encoding="utf-8") as f:
+                import json
                 json.dump(answer, f, ensure_ascii=False, indent=4, default=self._json_safe)
 
         def upload_log(self, filename):
@@ -215,8 +201,8 @@ class GoogleDrive:
                     fields="id"
                 ).execute()
 
-            def set_userid(self,userid):
-                self.userid = userid
+        def set_userid(self,userid):
+            self.userid = userid
 
         def upload_file(self, filepath):
 

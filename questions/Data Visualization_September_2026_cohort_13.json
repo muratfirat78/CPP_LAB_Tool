@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex13 - Code: Boxplot big vs small shopping",
+  "type": "programming",
+  "text": "Using Ex6_df (with columns transaction, category, items, big_shopping), create a boxplot showing the number of items per product category for big and small shoppings using sns.boxplot().",
+  "index": 13,
+  "answer": "sns.boxplot(data=Ex6_df, x='big_shopping', y='items', hue='category')"
+}

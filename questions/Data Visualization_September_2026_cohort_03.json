@@ -1,0 +1,11 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex3 - MC: Multi-line plot code",
+  "type": "multiple_choice",
+  "text": "Which code correctly plots total_profit and facecream as two separate lines against month_number?\n\nA) plt.plot(df['month_number'], df['total_profit'])\n   plt.plot(df['month_number'], df['facecream'])\n\nB) plt.multiplot(df['month_number'], [df['total_profit'], df['facecream']])\n\nC) plt.plot(df[['total_profit', 'facecream']])\n\nD) plt.line(df['month_number'], df['total_profit'], df['facecream'])",
+  "choices": ["A", "B", "C", "D"],
+  "correctness": [true, false, false, false],
+  "index": 3,
+  "answer": "A"
+}

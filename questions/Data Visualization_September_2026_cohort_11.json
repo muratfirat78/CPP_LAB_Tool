@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex11 - Code: Lmplot price-demand",
+  "type": "programming",
+  "text": "Using Ex4_df (aggregated transaction data with columns week, product_id, price, purchase_amount), visualize the price-demand relation for products 'v_16' and 'v_10' using sns.lmplot().",
+  "index": 11,
+  "answer": "import warnings\nwarnings.filterwarnings('ignore')\nsns.lmplot(x='price', y='purchase_amount', hue='product_id',\n    data=Ex4_df[(Ex4_df['product_id']=='v_16') | (Ex4_df['product_id']=='v_10')], height=9)"
+}

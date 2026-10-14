@@ -1,0 +1,9 @@
+{
+  "component": "Data Visualization",
+  "run": "September 2026 cohort",
+  "title": "Ex7 - Open: Hue interpretation",
+  "type": "open",
+  "text": "In the scatter plot colored by country of origin (USA=blue, Japan=red, Germany=green): which country's cars tend to have the highest mpg? What does this suggest about design priorities?",
+  "index": 7,
+  "answer": "Japanese cars (red) cluster at higher mpg values. USA cars (blue) tend to have lower mpg and higher acceleration. This suggests Japanese manufacturers prioritized fuel efficiency."
+}
