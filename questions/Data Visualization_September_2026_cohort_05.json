@@ -3,7 +3,7 @@
   "run": "September 2026 cohort",
   "title": "Ex5 - Open: Pie chart interpretation",
   "type": "open",
-  "text": "Look at the pie chart of annual product sales. Which product has the largest share? What is a limitation of a pie chart compared to a bar chart for this data?",
+  "text": "Run the code below in a new cell:\n\n```python\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nurl1 = \"https://github.com/muratfirat78/CPP_Datasets/raw/main/company_sales_data.csv\"\ndf = pd.read_csv(url1, sep=',')\n\nlabels = ['FaceCream', 'FaceWash', 'ToothPaste', 'Bathing soap', 'Shampoo', 'Moisturizer']\nsalesData = [df['facecream'].sum(), df['facewash'].sum(), df['toothpaste'].sum(),\n             df['bathingsoap'].sum(), df['shampoo'].sum(), df['moisturizer'].sum()]\nplt.axis('equal')\nplt.pie(salesData, labels=labels, autopct='%1.1f%%')\nplt.legend(loc='lower right')\nplt.title('Sales data')\nplt.show()\n```\n\nLook at the pie chart of annual product sales. Which product has the largest share? What is a limitation of a pie chart compared to a bar chart for this data?",
   "index": 5,
   "answer": "Bathingsoap has the largest share. A limitation of pie charts is that small differences between slices are hard to compare accurately. The solution uses df['column'].sum() per product and plt.pie() with autopct for percentages."
 }

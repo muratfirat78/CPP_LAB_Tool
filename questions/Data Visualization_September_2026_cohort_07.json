@@ -3,7 +3,7 @@
   "run": "September 2026 cohort",
   "title": "Ex7 - Open: Hue interpretation",
   "type": "open",
-  "text": "In the scatter plot colored by country of origin (USA=blue, Japan=red, Germany=green): which country's cars tend to have the highest mpg? What does this suggest about design priorities?",
+  "text": "Run the code below in a new cell:\n\n```python\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nurl = 'https://github.com/muratfirat78/CPP_Datasets/raw/main/auto.xlsx'\ndfAuto = pd.read_excel(url)\ndfAuto['acceleration'] = dfAuto['acceleration']/10\ndfAuto = dfAuto.drop(dfAuto.loc[dfAuto['acceleration'] == 95].index)\n\nfig = plt.figure(figsize=(16,10))\nax = fig.add_subplot(111)\ncolors = {'USA': 'blue', 'Japan': 'red', 'Germany': 'green'}\nax.scatter(dfAuto['acceleration'], dfAuto['mpg'], s=400,\n           c=dfAuto['origin'].apply(lambda x: colors[x]), alpha=0.3, edgecolors='black')\nplt.title('MPG vs. Acceleration')\nplt.xlabel('Acceleration')\nplt.ylabel('MPG')\nplt.show()\n```\n\nIn the scatter plot colored by country of origin (USA=blue, Japan=red, Germany=green): which country's cars tend to have the highest mpg? What does this suggest about design priorities?",
   "index": 7,
   "answer": "Japanese cars (red) cluster at higher mpg values. USA cars (blue) tend to have lower mpg and higher acceleration. This suggests Japanese manufacturers prioritized fuel efficiency."
 }

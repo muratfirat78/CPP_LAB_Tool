@@ -3,7 +3,7 @@
   "run": "September 2026 cohort",
   "title": "Ex6 - Open: Marks and channels",
   "type": "open",
-  "text": "Look at the scatter plot of the automobile dataset (acceleration vs mpg). Identify: (1) what the marks are, (2) which visual channels are used, and (3) what each channel encodes.",
+  "text": "Run the code below in a new cell:\n\n```python\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nurl = 'https://github.com/muratfirat78/CPP_Datasets/raw/main/auto.xlsx'\ndfAuto = pd.read_excel(url)\ndfAuto['acceleration'] = dfAuto['acceleration']/10\ndfAuto = dfAuto.drop(dfAuto.loc[dfAuto['acceleration'] == 95].index)\n\nfig = plt.figure(figsize=(12,8))\nax = fig.add_subplot(111)\nax.scatter(dfAuto['acceleration'], dfAuto['mpg'], color='black')\nplt.title('MPG vs. Acceleration')\nplt.xlabel('Acceleration')\nplt.ylabel('MPG')\nplt.show()\n```\n\nLook at the scatter plot of the automobile dataset (acceleration vs mpg). Identify: (1) what the marks are, (2) which visual channels are used, and (3) what each channel encodes.",
   "index": 6,
   "answer": "Marks: points/dots. Channels: position x = acceleration, position y = mpg. No color channel in Ex6 — all points are black. Lower acceleration values tend to correspond to lower mpg."
 }
